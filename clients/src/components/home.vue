@@ -32,7 +32,7 @@
   <div class="row ">
     <div class="col l8">
     <div class="row">
-    <div class="col s10  m12 l12">
+    <div class="col s12  m12 l12">
       <div class="card">
         <div class="card-image">
            <!-- <img class='materialboxed img-responsive responsive-img' :src='require("../../static/saved/cart.png")'> -->
@@ -48,7 +48,7 @@
 
     </div>
     <div class='row'>
-    <div class="col s6 m6 l6">
+    <div class="col s5 m6 l6">
       <div class="card">
         <div class="card-image">
            <img class='materialboxed img-responsive responsive-img'
@@ -60,7 +60,7 @@
       </div>
 
     </div>
-    <div class="col s6 m6 l3">
+    <div class="col s5 m6 l3">
       <div class="card">
         <div class="card-image">
            <img class='materialboxed img-responsive responsive-img'
