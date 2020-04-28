@@ -46,6 +46,11 @@
         <li v-if="isLoggedIn"><a href="/logOut" @click.prevent="logOut">
          <i class="fa fa-sign-out"></i> Logout</a
          ></li>
+          <li >
+          <router-link to='/'>
+           <i class="fa fa-home"></i> home
+          </router-link>
+        </li>
        
        
   <!-- <ul class="collapsible"> -->
@@ -74,7 +79,7 @@
         <li  class="center">
            <router-link class="center" to='/order'>
         <i class="material-icons  ">shopping_cart
-          <span class="new white-text red badge">5</span>
+          <!-- <span class="new white-text red badge">5</span> -->
           </i><span class="left">cart</span>
         </router-link>
         </li>
@@ -84,7 +89,12 @@
          <i class="fa fa-sign-out"></i> Logout</a
          ></li>
         
-     <li v-if="!isLoggedIn">
+     <li >
+          <router-link to='/'>
+           <i class="fa fa-home"></i> home
+          </router-link>
+        </li>
+        <li v-if="!isLoggedIn">
           <router-link to='/login'>
            <i class="fa fa-sign-in"></i> login
           </router-link>

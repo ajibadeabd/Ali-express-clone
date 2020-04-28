@@ -2,10 +2,11 @@
     <div class="row">
 
 <div class="row ">
-    <div class="col m6  l4">
-        <div class="row s12">
+    <div class="col s10 m6  l4">
+        <div class=" card-image  s12">
             <img   class=' padding materialboxed img-responsive responsive-img'
-             width="420" src='../../public/f7c18fd8-4b92-42df-9fe1-96734de0c8d7.jpg' alt=""></div>
+             width="" src='../../public/f7c18fd8-4b92-42df-9fe1-96734de0c8d7.jpg'
+              alt=""></div>
     </div>
     <div class="col  padding l5">
                 <h6>
@@ -106,7 +107,7 @@
     </div>
     <div class="divider "></div>
     <div class="row">
-        <h6>
+        <h6 class="qty">
         Quantity:
         </h6>
         <div class="l2  description col">
@@ -192,5 +193,12 @@ export default {
 .padding{
     margin: 10px;
     margin-left: 10px;
+}
+.img{
+    width:300px;
+    height: 400px;
+}
+.qty{
+    padding-left: 10px;
 }
 </style>

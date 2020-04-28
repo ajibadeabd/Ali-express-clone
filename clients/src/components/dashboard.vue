@@ -1,7 +1,7 @@
 <template>
 <div>
    <div class="space row">
-     <div class="col l3 ">
+     <div class="col s12 m6 l3 ">
        <div class="card">
          <div class="card-content">
 
@@ -24,7 +24,7 @@
        </div>
      </div>
      <!-- <div class="col l10"> -->
-<div class="col l9">
+<div class="col s12 m6 l9">
   <div class="card">
      <!-- <div class="card-panesdl"> -->
  <div class="row valign-wrapper">
@@ -61,7 +61,7 @@
      <!-- </div> -->
    </div>
    <div class="row">
-     <div class="col l3">
+     <div class="col  s12 m6 l3">
        <div class="card">
          
            <ul class="section table-of-contents">
@@ -77,7 +77,7 @@
            
        </div>
      </div>
-     <div class="col l9">
+     <div class="col s12 m6 l9">
        <div class="card ">
         <div class="card-content">
           <h1>No post yet Add post soon on our App</h1>

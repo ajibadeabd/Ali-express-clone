@@ -35,52 +35,55 @@
     <div class="col s12  m12 l12">
       <div class="card">
         <div class="card-image">
-           <!-- <img class='materialboxed img-responsive responsive-img' :src='require("../../static/saved/cart.png")'> -->
            <img class='materialboxed img-responsive responsive-img'
            width="400"
       height="654"
 
               :src='require("../../public/saved/frontPage.jpg")'>
+              
 
            
         </div>
       </div>
 
     </div>
-    <div class='row'>
-    <div class="col s5 m6 l6">
+    <!-- <div class='row'>nn -->
+    <div class="col s12 m6 l6">
       <div class="card">
         <div class="card-image">
            <img class='materialboxed img-responsive responsive-img'
       height="654"
 
         
-  :src='require("../../public/saved/bata1.png")'>
+              :src='require("../../public/saved/watch.jpg")'>
+
         </div>
       </div>
 
     </div>
-    <div class="col s5 m6 l3">
+    <div class="col s6 m6 l3">
       <div class="card">
         <div class="card-image">
            <img class='materialboxed img-responsive responsive-img'
-      height="654"
-        :src='require("../../public/ee05b199-28e9-4e0c-b89c-56b2b4ff5664.jpg")'>
+      height="650"
+       :src='require("../../public/Aliexpress/-10864522972053276252.jpg")'>
+        <!-- :src='require("../../public/ee05b199-28e9-4e0c-b89c-56b2b4ff5664.jpg")'>  -->
         </div>
       </div>
 
     </div>
-    <div class="col s10  m6 l3">
+    <div class="col s6 m6 l3">
       <div class="card">
         <div class="card-image">
              <img class='materialboxed img-responsive responsive-img'
       height="654"
-        :src='require("../../public/306d1c6f-07b4-422d-a49d-8aa00d73797b..jpg")'>
+        :src='require("../../public/ee05b199-28e9-4e0c-b89c-56b2b4ff5664.jpg")'> 
+
         </div>
       </div>
 
     </div>
-    <div class="col s10  m6 l3">
+    <div class="col s12 hide-on-small m6 l6">
       <div class="card">
         <div class="card-image">
             <img class='materialboxed img-responsive responsive-img'
@@ -90,27 +93,51 @@
       </div>
 
     </div>
-    <div class="col s10  hide-on-med-and-down m6 l3">
+    <div class="col s12  hide-on-med-and-down m6 l6">
       <div class="card">
         <div class="card-image">
             <img class='materialboxed img-responsive responsive-img'
 
-        :src='require("../../public/saved/cha.jpg")'>
+        :src='require("../../public/saved/watch.jpg")'>
+        
         
         </div>
       </div>
 
     </div>
+    <!-- <div class="col s12  hide-on-med-and-down m6 l3">
+      <div class="card">
+        <div class="card-image">
+            <img class='materialboxed img-responsive responsive-img'
+
+        :src='require("../../public/saved/watch.jpg")'>
+        
+        
+        </div>
+      </div>
+
     </div>
+    <div class="col s12  hide-on-med-and-down m6 l3">
+      <div class="card">
+        <div class="card-image">
+            <img class='materialboxed img-responsive responsive-img'
+
+        :src='require("../../public/saved/watch.jpg")'>
+        
+        
+        </div>
+      </div>
+
+    </div> -->
+    <!-- </div> -->
     </div>
     </div>
     <div class="col hide-on-med-and-down l4">
       <div class="row">
-        <div class="col s10  m6 l12">
+        <div class="col s12  m12 l12">
       <div class="card">
         <div class="card-image">
-           <img class='materialboxed img-responsive responsive-img'
-
+           <img class='materialboxed mm img-responsive responsive-img'
         :src='require("../../public/saved/fps.jpg")'>
         
         
@@ -126,12 +153,12 @@
   </div>
 </div>
 
-   <div class="row center blue-text l12">
+   <div class="row center blue-text s12 l12 l12">
     <h3>FLASH SALES 00:00:00</h3>
   </div>    
 <div class="row">
   
-  <div class="col s4 m4 l3">
+  <div class="col s6 m4 l3">
     <div class="card">
       <div class="card-image">
         
@@ -141,26 +168,28 @@
  :src='require("../../public/Aliexpress/1778063442-142352068.jpg")'>
 
       </div>
-     <div class="card-title row">
-                        <div class="col m4 l4">
-                         <strike>$6000</strike>
+    <div class="card-content">
+                 <div class="center row">
+                   
+                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                 $3000</h4>
+                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                  <strike> $4000</strike></h4>
+                  <router-link to='/productpage'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
 
-                        </div>
-                        <div class="col m4 l4">
-                         <strong>$5600</strong>
+                  </router-link>
+                   <router-link to='/product'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
 
-                        </div>
-                        <div class="col m4 l4">
-                         <span class=" right blue">-30%</span>
+                  </router-link>
 
-                        </div>
-                        <div class="col  center l12">
-                            <router-link  class='btn  center blue' to="/productPage">more</router-link></div>
                     </div>
+            </div>
     </div>
      
   </div>
-  <div class="col s4 m4 l3">
+  <div class="col s6 m4 l3">
     <div class="card">
       <div class="card-image">
          
@@ -170,112 +199,30 @@
 
 
       </div>
-     <div class="card-title row">
-                        <div class="col l4">
-                         <strike>$6000</strike>
+     <div class="card-content">
+                 <div class="center row">
+                   
+                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                 $3000</h4>
+                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                  <strike> $4000</strike></h4>
+                  <router-link to='/productpage'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
 
-                        </div>
-                        <div class="col l4">
-                         <strong>$5600</strong>
+                  </router-link>
+                   <router-link to='/product'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
 
-                        </div>
-                        <div class="col l4">
-                         <span class=" right blue">-30%</span>
+                  </router-link>
 
-                        </div>
-                        <div class="col  center l12">
-                            <router-link  class='btn  center blue' to="/productPage">more</router-link></div>
                     </div>
+            </div>
      
     </div>
       
   </div>
   
-  <div class="col s4 m4 l3">
-    <div class="card">
-      <div class="card-image">
-<img class='materialboxed img-responsive responsive-img' 
-      height="650"
- :src='require("../../public/Aliexpress/-819298404-1456101062.jpg")'>
-
-      </div>
-     
-     <div class="card-title row">
-                        <div class="col l4">
-                         <strike>$6000</strike>
-
-                        </div>
-                        <div class="col l4">
-                         <strong>$5600</strong>
-
-                        </div>
-                        <div class="col l4">
-                         <span class=" right blue">-30%</span>
-
-                        </div>
-                        <div class="col  center l12">
-                            <router-link  class='btn  center blue' to="/productPage">more</router-link></div>
-                    </div>
-    </div>
-     
-  </div>
-  <div class="col s4 m4 l3">
-    <div class="card">
-      <div class="card-image">
-<img class='materialboxed img-responsive responsive-img' 
-      height="650"
- :src='require("../../public/Aliexpress/1289640842-2033801803.jpg")'>
-
-      </div>
-      <div class="card-title row">
-                        <div class="col l4">
-                         <strike>$6000</strike>
-
-                        </div>
-                        <div class="col l4">
-                         <strong>$5600</strong>
-
-                        </div>
-                        <div class="col l4">
-                         <span class=" right blue">-30%</span>
-
-                        </div>
-                        <div class="col  center l12">
-                            <router-link  class='btn  center blue' to="/productPage">more</router-link></div>
-                    </div>
-    </div>
-      
-  </div>
-  <div class="col s4 m4 hide-on-small-only l3">
-    <div class="card">
-      <div class="card-image">
-<!-- <img class='materialboxed img-responsive responsive-img' :src='require("../../static/Aliexpress/-16588179501311857720.jpg")'> -->
-<img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-          :src='require("../../public/saved/watch.jpg")'>
-      </div>
-     <div class="card-title row">
-                        <div class="col l4">
-                         <strike>$6000</strike>
-
-                        </div>
-                        <div class="col l4">
-                         <strong>$5600</strong>
-
-                        </div>
-                        <div class="col l4">
-                         <span class=" right blue">-30%</span>
-static
-                        </div>
-                        <div class="col  center l12">
-                            <router-link  class='btn  center blue' to="/productPage">more</router-link></div>
-                    </div>
-     
-    </div>
-   
-  </div>
-   <div class="col hide-on-small-only s4 m4 l3">
+   <div class="col hide-on-small-only s6 m4 l3">
     <div class="card">
       <div class="card-image">
   <img class='materialboxed img-responsive responsive-img'  
@@ -283,28 +230,30 @@ static
 
          :src='require("../../public/Aliexpress/1998726749-1297200811.jpg")'>
       </div>
-      <div class="card-title row">
-                        <div class="col l4">
-                         <strike>$6000</strike>
+       <div class="card-content">
+                 <div class="center row">
+                   
+                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                 $3000</h4>
+                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                  <strike> $4000</strike></h4>
+                  <router-link to='/productpage'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
 
-                        </div>
-                        <div class="col l4">
-                         <strong>$5600</strong>
+                  </router-link>
+                   <router-link to='/product'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
 
-                        </div>
-                        <div class="col l4">
-                         <span class=" right blue">-30%</span>
+                  </router-link>
 
-                        </div>
-                        <div class="col  center l12">
-                            <router-link  class='btn  center blue' to="/productPage">more</router-link></div>
                     </div>
+            </div>
              
      
     </div>
       
   </div>
-   <div class="col s4 m4 l3">
+   <div class="col s6 m4 l3">
     <div class="card">
       <div class="card-image">
 <img class='materialboxed img-responsive responsive-img'
@@ -313,26 +262,28 @@ static
 
 
       </div>
-     <div class="card-title row">
-                        <div class="col l4">
-                         <strike>$6000</strike>
+     <div class="card-content">
+                 <div class="center row">
+                   
+                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                 $3000</h4>
+                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                  <strike> $4000</strike></h4>
+                  <router-link to='/productpage'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
 
-                        </div>
-                        <div class="col l4">
-                         <strong>$5600</strong>
+                  </router-link>
+                   <router-link to='/product'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
 
-                        </div>
-                        <div class="col l4">
-                         <span class=" right blue">-30%</span>
+                  </router-link>
 
-                        </div>
-                        <div class="col  center l12">
-                            <router-link  class='btn  center blue' to="/productPage">more</router-link></div>
                     </div>
+            </div>
     </div>
       
   </div>
-<div class="col s4 m4 l3">
+<div class="col s6 m4 l3">
     <div class="card">
       <div class="card-image">
          <img class='materialboxed img-responsive responsive-img'
@@ -341,25 +292,151 @@ static
            :src='require("../../public/Aliexpress/-10864522972053276252.jpg")'>
 
       </div>
-      <div class="card-title row">
-                        <div class="col l4">
-                         <strike>$6000</strike>
+      <div class="card-content">
+                 <div class="center row">
+                   
+                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                 $3000</h4>
+                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                  <strike> $4000</strike></h4>
+                  <router-link to='/productpage'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
 
-                        </div>
-                        <div class="col l4">
-                         <strong>$5600</strong>
+                  </router-link>
+                   <router-link to='/product'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
 
-                        </div>
-                        <div class="col l4">
-                         <span class=" right blue">-30%</span>
+                  </router-link>
 
-                        </div>
-                        <div class="col  center l12">
-                            <router-link  class='btn  center blue' to="/productPage">more</router-link></div>
                     </div>
+            </div>
      
     </div>
       
+  </div>
+  <div class=" col m4 s6 l3">
+        <div class="   padding card">
+
+            <div class="card-image">
+
+                <img class='materialboxed img-responsive responsive-img'
+      height="650"
+
+        
+  :src='require("../../public/saved/bata1.png")'>
+            </div>
+            
+             <div class="card-content">
+                 <div class="center row">
+                   
+                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                 $3000</h4>
+                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                  <strike> $4000</strike></h4>
+                  <router-link to='/productpage'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
+
+                  </router-link>
+                   <router-link to='/product'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
+
+                  </router-link>
+
+                    </div>
+            </div>
+           
+        </div>
+        
+
+    </div>
+    
+  <div class="col s6 m4 l3">
+    <div class="card">
+      <div class="card-image">
+<img class='materialboxed img-responsive responsive-img' 
+      height="650"
+ :src='require("../../public/Aliexpress/-819298404-1456101062.jpg")'>
+
+      </div>
+     <div class="card-content">
+                 <div class="center row">
+                   
+                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                 $3000</h4>
+                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                  <strike> $4000</strike></h4>
+                  <router-link to='/productpage'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
+
+                  </router-link>
+                   <router-link to='/product'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
+
+                  </router-link>
+
+                    </div>
+            </div>
+    </div>
+     
+  </div>
+  <div class="col s6 m4 l3">
+    <div class="card">
+      <div class="card-image">
+<img class='materialboxed img-responsive responsive-img' 
+      height="650"
+ :src='require("../../public/Aliexpress/1289640842-2033801803.jpg")'>
+
+      </div>
+      <div class="card-content">
+                 <div class="center row">
+                   
+                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                 $3000</h4>
+                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                  <strike> $4000</strike></h4>
+                  <router-link to='/productpage'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
+
+                  </router-link>
+                   <router-link to='/product'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
+
+                  </router-link>
+
+                    </div>
+            </div>
+    </div>
+      
+  </div>
+  <div class="col s6 m4 l3">
+    <div class="card">
+      <div class="card-image">
+<img class='materialboxed img-responsive responsive-img'
+      height="650"
+
+          :src='require("../../public/saved/watch.jpg")'>
+      </div>
+     <div class="card-content">
+                 <div class="center row">
+                   
+                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                 $3000</h4>
+                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
+                  <strike> $4000</strike></h4>
+                  <router-link to='/productpage'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
+
+                  </router-link>
+                   <router-link to='/product'>
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
+
+                  </router-link>
+
+                    </div>
+            </div>
+     
+    </div>
+   
   </div>
   
   </div>
@@ -424,14 +501,15 @@ margin:10px}
 .img1{
   height: 25%;
 } */
-.img1{
-  width: 330px;
-  height: 330px;
+img{
+  width: 230px;
+  height: 230px;
 }
-.smallImg{
-width: 330px;
-  height: 620px; 
-  }
+.mm{
+   width: 230px;
+  height: 730px;
+}
+
   .npm{
     padding: 0px;
     margin: 0px;

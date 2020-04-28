@@ -92,8 +92,51 @@
 
     </div>
     
-    <div class="col  m12 s12 l4">
+    <div class="col s12">
+        <div class=" col m6 s6 l4">
         <div class="   padding card">
+
+            <div class="card-image">
+
+                <img class='materialboxed img-responsive responsive-img'
+      height="654"
+
+        
+  :src='require("../../public/saved/bata1.png")'>
+            </div>
+            
+            <div class="card-content">
+                <h5 class="center">order summary</h5>
+                shoe <span class="right">$ 30.83</span>
+                <br>
+                Subtotal <span class="right">$ 30.83</span>
+                <br> 
+                <strong>Total</strong><span class="right">$ 30.83</span> <br>
+                    <div class="row">
+
+                <h4 class="btn center-align col l4  s4 m4  blue waves-effect">Buy (1)</h4>
+                <h4 class="btn center-align col l4  s4 m4  blue waves-effect">Buy (1)</h4>
+                <h4 class="btn center-align col l4  s4 m4  blue waves-effect">Buy (1)</h4>
+
+                    </div>
+            </div>
+           
+        </div>
+        
+
+    </div>
+     <div class="col  m6 s6 l4">
+        <div class="   padding card">
+
+            <div class="card-image">
+
+                <img class='materialboxed img-responsive responsive-img'
+      height="654"
+
+        
+  :src='require("../../public/saved/bata1.png")'>
+            </div>
+            
             <div class="card-content">
                 <h5 class="center">order summary</h5>
                 shoe <span class="right">$ 30.83</span>
@@ -109,9 +152,20 @@
             </div>
            
         </div>
+        
 
     </div>
+    </div>
 </div>
+<!-- <div>
+   <ul class="collection with-header">
+        <li class="collection-header center"><h4>LIST OF GOODS AVAILABLE IN NIGERIA</h4></li>
+        <li class="collection-item">RICE</li>
+        <li class="collection-item">Alvin</li>
+        <li class="collection-item">Alvin</li>
+        <li class="collection-item">Alvin</li>
+      </ul>
+    </div> -->
 
     </div>
 </template>
