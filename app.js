@@ -10,9 +10,9 @@ var app = express();
 
 //map global promise - get rid of warning
 mongoose.promise=global.promise;
-// mongoose.connect( 'mongodb://localhost/Ali_express_clone',
+mongoose.connect( 'mongodb://localhost/Ali_express_clone',
   
-mongoose.connect( 'mongodb+srv://user:user@cluster0-ha9ym.mongodb.net/test?retryWrites=true&w=majority',
+// mongoose.connect( 'mongodb+srv://user:user@cluster0-ha9ym.mongodb.net/test?retryWrites=true&w=majority',
 {useNewUrlParser:true,
   useUnifiedTopology: true 
 })
@@ -40,9 +40,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
-// app.get('*',(req,res)=>{
-//   res.sendFile(path.join(__dirname,'public/index.html'))
-//   })
+app.get('*',(req,res)=>{
+  res.sendFile(path.join(__dirname,'public/index.html'))
+  })
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

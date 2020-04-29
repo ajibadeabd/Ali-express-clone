@@ -2,7 +2,7 @@
 <div>
    
 <div class="row ">
-  <div class="col m5 s5 l4">
+  <div class="col m5 s5 l3">
         
       <div class="collection">
         <a  class="collection-item grey active"><h6>
@@ -14,7 +14,7 @@
         <router-link to="product" class="collection-item">Bags $ Shoe</router-link>
         <router-link to="product" class="collection-item">Toys, kids & shoes</router-link>
         <router-link to="product" class="collection-item">Synthetic Hair</router-link>
-        <router-link to="product" class="collection-item">Electroni</router-link>
+        <router-link to="product" class="collection-item">Electronic</router-link>
         <router-link to="product" class="collection-item">Footwear</router-link>
         <router-link to="product" class="collection-item">Watches</router-link>
         <router-link to="product" class="collection-item">Automobiles & Motorcycles</router-link>
@@ -27,7 +27,7 @@
         </div>
       </div>
   </div>
-  <div class="col s7 m7 l8">
+  <div class="col s7 m7 l9">
          
   <div class="row ">
     <div class="col l8">
@@ -35,7 +35,7 @@
     <div class="col s12  m12 l12">
       <div class="card">
         <div class="card-image">
-           <img class='materialboxed img-responsive responsive-img'
+           <img class='materialboxed mmm img-responsive responsive-img'
            width="400"
       height="654"
 
@@ -48,8 +48,8 @@
 
     </div>
     <!-- <div class='row'>nn -->
-    <div class="col s12 m6 l6">
-      <div class="card">
+    <div class="col s12 m6 l3">
+      <!-- <div class="card"> -->
         <div class="card-image">
            <img class='materialboxed img-responsive responsive-img'
       height="654"
@@ -58,43 +58,68 @@
               :src='require("../../public/saved/watch.jpg")'>
 
         </div>
-      </div>
+      <!-- </div> -->
+
+    </div>
+    <div class="col s12 m6 l3">
+      <!-- <div class="card"> -->
+        <div class="card-image">
+           <img class='materialboxed img-responsive responsive-img'
+      height="654"
+
+        
+              :src='require("../../public/saved/watch.jpg")'>
+
+        </div>
+      <!-- </div> -->
 
     </div>
     <div class="col s6 m6 l3">
-      <div class="card">
+      <!-- <div class="card"> -->
         <div class="card-image">
            <img class='materialboxed img-responsive responsive-img'
       height="650"
        :src='require("../../public/Aliexpress/-10864522972053276252.jpg")'>
         <!-- :src='require("../../public/ee05b199-28e9-4e0c-b89c-56b2b4ff5664.jpg")'>  -->
         </div>
-      </div>
+      <!-- </div> -->
 
     </div>
     <div class="col s6 m6 l3">
-      <div class="card">
+      <!-- <div class="card"> -->
         <div class="card-image">
              <img class='materialboxed img-responsive responsive-img'
       height="654"
         :src='require("../../public/ee05b199-28e9-4e0c-b89c-56b2b4ff5664.jpg")'> 
 
         </div>
-      </div>
+      <!-- </div> -->
 
     </div>
     <div class="col s12 hide-on-small m6 l6">
-      <div class="card">
+      <!-- <div class="card"> -->
         <div class="card-image">
             <img class='materialboxed img-responsive responsive-img'
       height="654"
         :src='require("../../public/059b22d9-bef9-4904-8543-277ffaed7482.jpg")'>
         </div>
-      </div>
+      <!-- </div> -->
+
+    </div>
+    <div class="col s12  hide-on-med-and-down m6 l0">
+      <!-- <div class="card"> -->
+        <div class="card-image">
+            <img class='materialboxed img-responsive responsive-img'
+
+        :src='require("../../public/saved/watch.jpg")'>
+        
+        
+        </div>
+      <!-- </div> -->
 
     </div>
     <div class="col s12  hide-on-med-and-down m6 l6">
-      <div class="card">
+      <!-- <div class="card"> -->
         <div class="card-image">
             <img class='materialboxed img-responsive responsive-img'
 
@@ -102,11 +127,11 @@
         
         
         </div>
-      </div>
+      <!-- </div> -->
 
     </div>
-    <!-- <div class="col s12  hide-on-med-and-down m6 l3">
-      <div class="card">
+    <div class="col s12  hide-on-med-and-down m6 l6">
+      <!-- <div class="card"> -->
         <div class="card-image">
             <img class='materialboxed img-responsive responsive-img'
 
@@ -114,21 +139,9 @@
         
         
         </div>
-      </div>
+      <!-- </div> -->
 
     </div>
-    <div class="col s12  hide-on-med-and-down m6 l3">
-      <div class="card">
-        <div class="card-image">
-            <img class='materialboxed img-responsive responsive-img'
-
-        :src='require("../../public/saved/watch.jpg")'>
-        
-        
-        </div>
-      </div>
-
-    </div> -->
     <!-- </div> -->
     </div>
     </div>
@@ -480,13 +493,6 @@ export default {
 }
 </script>
 <style scoped>
-.half{
-background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/35/Woman_selling_garri.jpg");
-min-height: 1000px;
-padding: 100px;
-margin:5px 10px 20px 10px;
-/* opacity:; */
-}
 .btn{
 margin: 10px;
 }
@@ -494,7 +500,7 @@ margin: 10px;
   width: 40%;
 }
 .space{
-margin:10px}
+margin:10px ! important}
 /* .img3{
   height: 100%;
 }
@@ -502,17 +508,21 @@ margin:10px}
   height: 25%;
 } */
 img{
-  width: 230px;
-  height: 230px;
+  width: 420px ! important;
+  height: 230px ! important;
 }
 .mm{
-   width: 230px;
-  height: 730px;
+   width: 490px ! important;
+  height: 730px ! important;
+}
+.mmm{
+   height: 230px ! important;
+  width: 900px ! important;
 }
 
   .npm{
-    padding: 0px;
-    margin: 0px;
+    padding: 0px ! important;
+    margin: 0px ! important;
   }
   /* .down{
 /* padding-top: 20px; */
