@@ -8,6 +8,7 @@ import fullProduct from '@/components/fullProduct'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import dashboard from '@/components/dashboard'
+import upload from '@/components/uploadFile'
 import store from '../store'
 
 Vue.use(Router)
@@ -60,9 +61,9 @@ const router = new Router({
       // }
     },
     {
-      path: '/small',
-      name: 'small',
-      component: small
+      path: '/upload',
+      name: 'upload',
+      component: upload
     },
     {
       path: '/product',
@@ -92,7 +93,16 @@ if(store.getters.isLoggedIn){
 }else{
     next();
 }
-}else{
+}else if(to.matched.some(record=>record.meta.requiresAdmin)){
+  if(store.getters.isLoggedIn
+     && store.getters.admin
+     ){
+      next("/")
+  
+  }else{
+      next();
+  }
+  }else{
 next()
 }
 

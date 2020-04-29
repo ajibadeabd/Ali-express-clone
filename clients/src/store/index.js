@@ -13,12 +13,14 @@ export default new Vuex.Store({
         user: {},
         status:'',
         msg:'',
-        error:null
+        error:null,
+        admin:''
     },
     getters: {
         isLoggedIn: state=>!!state.token ,
           authState: state =>state.status,
-          user:state =>state.user
+          user: state =>state.user,
+          admin: state =>state.admin
        },
     actions: {
         async signIn({commit},user) {
