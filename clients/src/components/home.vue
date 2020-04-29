@@ -48,7 +48,7 @@
 
     </div>
     <!-- <div class='row'>nn -->
-    <div class="col s12 m6 l3">
+    <div class="col s6 m6 l3">
       <!-- <div class="card"> -->
         <div class="card-image">
            <img class='materialboxed img-responsive responsive-img'
@@ -61,7 +61,7 @@
       <!-- </div> -->
 
     </div>
-    <div class="col s12 m6 l3">
+    <div class="col s6 m6 l3">
       <!-- <div class="card"> -->
         <div class="card-image">
            <img class='materialboxed img-responsive responsive-img'
