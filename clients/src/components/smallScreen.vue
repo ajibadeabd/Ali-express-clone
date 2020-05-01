@@ -5,20 +5,38 @@
 
       <div class="collection">
         <a href="#!" class="collection-item grey active"><h4>CATEGORIES  <span>see all</span></h4></a>
-        <a href="#!" class="collection-item">Women clothing</a>
-        <a href="#!" class="collection-item">Men clothing</a>
-        <a href="#!" class="collection-item">Phones and acessories</a>
-        <a href="#!" class="collection-item">Bags $ Shoe</a>
-        <a href="#!" class="collection-item">Toys, kids & shoes</a>
-        <a href="#!" class="collection-item">Electronic</a>
-        <a href="#!" class="collection-item">Footwear</a>
-        <a href="#!" class="collection-item">Watches</a>
-        <a href="#!" class="collection-item">Health Care</a>
-        <a href="#!" class="collection-item">Nail Art & Tools</a>
-        <a href="#!" class="collection-item">Skin Care</a>
-        <a href="#!" class="collection-item">Synthetic Hair</a>
-        <a href="#!" class="collection-item">Automobiles & Motorcycles</a>
-        <a href="#!" class="collection-item">Home Improvement, Tools
+        
+        <a href="#!" class="collection-item"> 
+            
+          <img src="../../public/small/ac07d1d4-bbff-4588-a507-54dbe0e3f12f.jpg" 
+          width='50px' class="circle" alt="">
+            Women clothing</a>
+        <a href="#!" class="collection-item"> <img src="../../public/small/0bfca420-9ad6-424e-a9e8-39694aca450e.jpg" 
+          width='50px' class="circle" alt="">Men clothing</a>
+        <a href="#!" class="collection-item"> <img src="../../public/small/ac07d1d4-bbff-4588-a507-54dbe0e3f12f.jpg" 
+          width='50px' class="circle" alt="">Phones and acessories</a>
+        <a href="#!" class="collection-item"> <img src="../../public/small/ac07d1d4-bbff-4588-a507-54dbe0e3f12f.jpg" 
+          width='50px' class="circle" alt="">Bags $ Shoe</a>
+        <a href="#!" class="collection-item"> <img src="../../public/small/ac07d1d4-bbff-4588-a507-54dbe0e3f12f.jpg" 
+          width='50px' class="circle" alt="">Toys, kids & shoes</a>
+        <a href="#!" class="collection-item"> <img src="../../public/small/ac07d1d4-bbff-4588-a507-54dbe0e3f12f.jpg" 
+          width='50px' class="circle" alt="">Electronic</a>
+        <a href="#!" class="collection-item"> <img src="../../public/small/ac07d1d4-bbff-4588-a507-54dbe0e3f12f.jpg" 
+          width='50px' class="circle" alt="">Footwear</a>
+        <a href="#!" class="collection-item"> <img src="../../public/small/ac07d1d4-bbff-4588-a507-54dbe0e3f12f.jpg" 
+          width='50px' class="circle" alt="">Watches</a>
+        <a href="#!" class="collection-item"> <img src="../../public/small/ac07d1d4-bbff-4588-a507-54dbe0e3f12f.jpg" 
+          width='50px' class="circle" alt="">Health Care</a>
+        <a href="#!" class="collection-item"> <img src="../../public/small/ac07d1d4-bbff-4588-a507-54dbe0e3f12f.jpg" 
+          width='50px' class="circle" alt="">Nail Art & Tools</a>
+        <a href="#!" class="collection-item"> <img src="../../public/small/ac07d1d4-bbff-4588-a507-54dbe0e3f12f.jpg" 
+          width='50px' class="circle" alt="">Skin Care</a>
+        <a href="#!" class="collection-item"> <img src="../../public/small/ac07d1d4-bbff-4588-a507-54dbe0e3f12f.jpg" 
+          width='50px' class="circle" alt="">Synthetic Hair</a>
+        <a href="#!" class="collection-item"> <img src="../../public/small/ac07d1d4-bbff-4588-a507-54dbe0e3f12f.jpg" 
+          width='50px' class="circle" alt="">Automobiles & Motorcycles</a>
+        <a href="#!" class="collection-item"> <img src="../../public/small/ac07d1d4-bbff-4588-a507-54dbe0e3f12f.jpg" 
+          width='50px' class="circle" alt="">Home Improvement, Tools
 </a>
       </div>
   </div>

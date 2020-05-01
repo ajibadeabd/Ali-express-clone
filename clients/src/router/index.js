@@ -21,6 +21,11 @@ const router = new Router({
       component: home
     },
     {
+      path: '/small',
+      name: 'small',
+      component: small
+    },
+    {
       path: '/order',
       name: 'order',
       component: order,
