@@ -71,7 +71,7 @@
       <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
     </div></li>
    <li v-if="isLoggedIn">
-          <router-link class="center" to='/dashboard'>
+          <router-link class="" to='/dashboard'>
            <i class="fa fa-user" ></i>dashboard
           </router-link>
         </li>

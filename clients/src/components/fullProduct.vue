@@ -5,28 +5,23 @@
         <div class="card-image">
             <img src="../../public/first.jpg" class='materialboxed img-responsive responsive-img' alt="">
         </div>
-
-        
+<!-- tabs -->
+         <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a >Phone & Accessories</a></li>
+        <li class="tab col s3"><a class="active" >Wears</a></li>
+        <li class="tab col s3 "><a>Men shoes</a></li>
+        <li class="tab col s3"><a >Fashion</a></li>
+      </ul>
+    </div>
+    <!-- <div id="test1" class="col s12">Test 1</div>
+    <div id="test2" class="col s12">Test 2</div>
+    <div id="test3" class="col s12">Test 3</div>
+    <div id="test4" class="col s12">Test 4</div> -->
+  </div>
        
-        <div class=" center mm row">
-           <div class="col offset-l1 offset-m1 offset-11 hh z-depth-2 l2 m2 s2 ">
-               <router-link to='/product'>MOBILE GEEK</router-link>
-           </div>
-           <div class="col hh z-depth-2 l2 m2 s2 ">
-               <router-link to='/product'>MOBILE GEEK</router-link>
-           </div>
-           <div class="col hh z-depth-2 l2 m2 s2 ">
-               <router-link to='/product'>MOBILE GEEK</router-link>
-           </div>
-           <div class="col hh z-depth-2 l2 m2 s2 ">
-               <router-link to='/product'>MOBILE GEEK</router-link>
-           </div>
-           <div class="col hh z-depth-2 l2 m2 s2 ">
-               <router-link to='/product'>MOBILE GEEK</router-link>
-           </div>
-          
-           
-        </div>
+        
         
         <div class="row main">
              
@@ -635,11 +630,17 @@
     </div>
 </template>
 <script>
+import m from 'materialize-css'
+
 export default {
     data(){
         return{
 
         }
+    },
+    mounted(){
+      let el = el
+      var instance = M.Tabs.init(el, options);
     }
 }
 </script>
