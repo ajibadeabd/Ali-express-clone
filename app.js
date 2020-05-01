@@ -10,9 +10,9 @@ var app = express();
 
 //map global promise - get rid of warning
 mongoose.promise=global.promise;
-mongoose.connect( 'mongodb://localhost/Ali_express_clone',
+// mongoose.connect( 'mongodb://localhost/Ali_express_clone',
   
-// mongoose.connect( 'mongodb+srv://user:user@cluster0-ha9ym.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect( 'mongodb+srv://user:user@cluster0-ha9ym.mongodb.net/test?retryWrites=true&w=majority',
 {useNewUrlParser:true,
   useUnifiedTopology: true 
 })
