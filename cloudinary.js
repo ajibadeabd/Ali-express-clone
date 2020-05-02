@@ -10,7 +10,7 @@ const cloudinary = require('cloudinary');
  //it a function
 
  exports.uploads = (file,folder)=>{
-console.log(cloud_name)
+// console.log(cloud_name)
       return new Promise(resolve=>{
          cloudinary.uploader.upload(file,(result)=>{
              resolve({

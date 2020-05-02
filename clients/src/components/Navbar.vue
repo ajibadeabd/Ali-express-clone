@@ -34,7 +34,7 @@
             <i class="material-icons">shopping_cart</i>
           </router-link>
         </li>
-             <li>
+             <!-- <li>
                <i class="material-icons">notifications</i>
                </li>        
                <li>
@@ -42,7 +42,17 @@
             <span class="new white-text red badge">5</span>
 
          </a>
-          </li>
+          </li> -->
+            <li v-if="isLoggedIn">
+          <router-link to='/upload'>
+           <i class="fa fa-upload"></i>  file
+          </router-link>
+        </li>
+        <li v-if="isLoggedIn">
+          <router-link to='/AllImages'>
+           <i class="fa fa-file"></i>  uploaded file
+          </router-link>
+        </li>
         <li v-if="isLoggedIn"><a href="/logOut" @click.prevent="logOut">
          <i class="fa fa-sign-out"></i> Logout</a
          ></li>
@@ -97,6 +107,16 @@
         <li v-if="!isLoggedIn">
           <router-link to='/login'>
            <i class="fa fa-sign-in"></i> login
+          </router-link>
+        </li>
+        <li v-if="isLoggedIn">
+          <router-link to='/upload'>
+           <i class="fa fa-upload"></i>  file
+          </router-link>
+        </li>
+        <li v-if="isLoggedIn">
+          <router-link to='/AllImages'>
+           <i class="fa fa-file"></i>  uploaded file
           </router-link>
         </li>
         <div class="divider"></div>

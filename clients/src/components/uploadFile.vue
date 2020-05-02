@@ -1,9 +1,12 @@
 <template>
 <div class="row">
-    <div class="red">
+    <div class="lighten-3 container red">
         {{message}}
     </div>
-    <div class="col s10 m6 l4  offset-l4 offset-s1 offset-m3">
+    <div class="container">
+        upload an image
+    </div>
+    <div class="col s12 m10 l4 offset-l1 offset-m1  ">
         <form @submit.prevent="sendFile" enctype="multipart/form-data" > 
                      <div class="card">
             <div class="card-action  white-text">
@@ -37,9 +40,31 @@
             </div>
         </div>
         </form>
+
+      
        
     </div>
+    <div class="col s12 m10 offset-m1 l2 ">
+        
+<div class="card">
+<div class="card-content "   v-for="(file,index) in files" :keys="index">
+
+<div class="row">
+                    {{index}}:       {{file.name}} 
+                     <i @click.prevent="files.splice(index,1)"
+                      class=" right red lighten-1 circle material-icons"> close
+                               </i>    
+                    </div>
+
+</div>
    
+</div>
+
+    </div>
+   
+   <div >
+         
+   </div>
 </div>
 
 
@@ -62,30 +87,44 @@ export default {
     },
     methods:{
         selectFile(){
-           this.files = this.$refs.files.files[0]
+           const files = this.$refs.files.files;
+           this.files = [...this.files,...files]
                this.message=""
                this.error=false
 
         },
            sendFile(){
-               console.log(this.file.name)
-                   const formData = new FormData()
-                formData.append('file',this.file)
+            //    console.log(this.file.name)
+               for (let i=0; i<this.files.length; i++) {
+                //    console.log(this.files[i].name)
+              const formData = new FormData()
+                formData.append('files',this.files[i])
+            
+                 
                 try{
            Api().post('/admin/uploadFile',formData)
            .then(res=>{
-               console.log(res)
+            //    console.log(res)
                this.file='';
-               this.message="file has been uploaded"
+               this.message= res.data.message
                     this.error=false
+                    // this.$router.push('/AllImages')
+
+           })
+           .catch(err=>{
+                    // this.message=err.res.data.error
+                    this.message="image was not uploaded successfully due to network"
+
 
            })
 
                 }catch(err){
                     console.log(err)
-                    this.message="something went wrong"
                     this.error=true
-                }
+                    // this.message=err.res.data.error
+
+                    this.message="something went wrong"
+                }}
 
         }
         // ...mapActions(['signIn']),
