@@ -10,6 +10,7 @@ import Register from '@/components/Register'
 import dashboard from '@/components/dashboard'
 import upload from '@/components/uploadFile'
 import AllImages from '@/components/AllImages'
+import image from '@/components/eachimage'
 import store from '../store'
 
 Vue.use(Router)
@@ -38,6 +39,15 @@ const router = new Router({
       path: '/AllImages',
       name: 'AllImages',
       component: AllImages,
+      meta:{
+        // requiresAuth:true
+      }
+    },
+    {
+      path: '/image/:id',
+      name: 'image',
+      component: image,
+      props:true,
       meta:{
         // requiresAuth:true
       }

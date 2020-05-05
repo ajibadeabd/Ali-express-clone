@@ -171,5 +171,7 @@ this.signOut()
 }
 </script>
 <style scoped>
-
+nav{
+  /* position: fixed; */
+}
 </style>

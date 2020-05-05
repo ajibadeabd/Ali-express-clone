@@ -5,85 +5,93 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const User = require('../models/user')
 const passport = require('passport')
+const  {verifyUser} = require('../helper/Auth')
+
 
 
 process.env.SECRET_KEY = 'secure'
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
-  res.send('respond with a resozzzurce');
+  res.send('respond with a resource');
 });
+
 router.post('/signUp', function(req, res, next) {
-  // console.log(req.body)
-let {
-  userName,
-  password,
-  confirm_password,
-  email
-} = req.body
-if (req.body.password !== req.body.confirm_password) {
-  res.status(400).json({
-    msg:'Password incorrect'
-  })
-  return;
-}
-User.findOne({
-  userName:userName
-}).then((user)=>{
-        if(user){
-        res.status(400).json({
-            msg:"Username already taken" 
-        })
-      
- User.findOne({
-    email:email
-}).then((email)=>{
-   if(email){
-       res.status(400).json({
-           msg:"email  already been registerd. did you forget your password" 
-       })
-      };return 
-})  }else{
-  let newUser= new User({
+  let {
     userName,
-    email,
     password,
+    confirm_password,
+    email
+  } = req.body
+  if (password !== confirm_password) {
+    return res.status(400).json({
+      msg:'Password incorrect'
     })
-    //hash password
-    bcrypt.genSalt(10,(err,salt)=>{
-      bcrypt.hash(newUser.password,salt,(err,hash)=>{
-          if(err) throw err
-          newUser.password=hash;
-          
-          newUser.save()
-          .then((user)=>{
+    ;
+  }else{
+    User.findOne({
+      userName:userName
+    }).then((user)=>{
+      if(user) {
+      return res.status(400).json({
+          msg:"Username already taken" 
+      })
+      }else{
+        User.findOne({
+          email:email
+      })
+      .then((user)=>{
+        if(user) {
+         return res.status(400).json({
+            msg:"email  already been registerd. did you forget your password" 
+        })
+        
+        }else{
+          let newUser= new User({
+            userName,
+            email,
+            password,
+            
+            userType:'user'
+            })
+            // console.log(newUser)
+            //  hash password
+             bcrypt.genSalt(10,(err,salt)=>{
+              bcrypt.hash(newUser.password,salt,(err,hash)=>{
+                  if(err) throw err
+                  newUser.password=hash;
+                  
+                  newUser.save()
+                  .then((user)=>{
+                      
+                    
+                      res.status(201).json({
+                          success:true,
+                          msg:`i am please to inform you that  ${user.userName} successfully registerd`
+                      })
+                     
+                    
               
-            
-              res.status(201).json({
-                  success:true,
-                  msg:`i am please to inform you that  is registerd`
+                  }
+                  )
+                  .catch(err=>{
+                      res.json({
+                        error:err
+                        
+                      })
+                  })
               })
-             
-            
-      
-          }
-          )
-          .catch(err=>{
-              res.json({
-                error:err
-                
               })
-          })
+
+        }
       })
-      })
-}
-})
 
 
-
-
-});
-router.post('/signIn', function(req, res, next) {
+      }
+    })
+  }
+  
+});router.post('/signIn', function(req, res, next) {
   User.findOne({email:req.body.email})
   .then(user=>{
     if (!user) {
@@ -100,10 +108,11 @@ router.post('/signIn', function(req, res, next) {
            userName:user.userName,
             password:user.password,
             email:user.email,
+            userType: user.userType
   
           }
           jwt.sign(payload,process.env.SECRET_KEY, {
-              expiresIn:609222
+              expiresIn:"1h"
   
             },(err,token)=>{
                 res.status(200).json({
@@ -129,10 +138,18 @@ router.post('/signIn', function(req, res, next) {
 router.get('/profile',passport.authenticate('jwt',{
   session:false
 }),(req,res,next) =>{
- 
-  return res.json({
-    msg:loggedIn,
-    user:req.user})
+        if(req.user.userType==='user'){
+          return res.status(200).json({
+            msg:'loggedIn',
+            user:req.user})
+        }else{
+          return res.status(401).json({
+            msg:'unauthorize',
+            user:null})
+        }
+
+  
+  
 })
 
 module.exports = router;

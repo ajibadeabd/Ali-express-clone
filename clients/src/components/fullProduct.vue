@@ -630,6 +630,7 @@
     </div>
 </template>
 <script>
+import Api from '../../config/Api'
 import m from 'materialize-css'
 
 export default {
@@ -637,7 +638,11 @@ export default {
         return{
 
         }
+       
     },
+     created(){
+          // Api.get('/admin/')
+        },
     mounted(){
       let el = el
       var instance = M.Tabs.init(el, options);

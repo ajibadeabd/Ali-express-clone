@@ -7,12 +7,23 @@
 
 <div class='row'>
     <div v-for="(file,index) in files.images" :keys='file.id'
-     class="col xl3 m10 l4  s10 offset-m1">
-        <div class="">
-            <div class="card-image">
-    <img :src="file.url" alt="">
+     class="col xl3 m6 l4  s10 ">
+        <div class="col s12 m12 l12 xl12">
+            <div class="">
+    <img :src="file.url" class="responsive-img img-responsive" alt="">
 </div>
+<div v-if="file.name" >
+{{file.name}}
+<!-- {{file.id}} -->
+           <router-link  
+            class="btn col light-blue s10 m10 l10 xl10 left waves-effects waves-light"
+             :to="{name:'image', params:{id:file._id}}">
+               <div>EDIT</div>
+           </router-link>
 
+
+</div>
+        
         </div>
 
     </div>
@@ -40,11 +51,7 @@ export default {
     },
     methods:{
         selectFile(){
-           const files = this.$refs.files.files;
-           this.files = [...this.files,...files]
-               this.message=""
-               this.error=false
-
+         
         },
            
      },
@@ -59,7 +66,7 @@ Api().get('/admin/getUploadedFile')
 
 <style scoped>
 img{
-    width: 230px ! important;
+    width: 270x ! important;
     height:  230px ! important;
 }
 </style>

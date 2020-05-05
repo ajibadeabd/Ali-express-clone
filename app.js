@@ -10,9 +10,9 @@ var app = express();
 
 //map global promise - get rid of warning
 mongoose.promise=global.promise;
-// mongoose.connect( 'mongodb://localhost/Ali_express_clone',
+mongoose.connect( 'mongodb://localhost/Ali_express_clone',
   
-mongoose.connect( 'mongodb+srv://user:user@cluster0-ha9ym.mongodb.net/test?retryWrites=true&w=majority',
+// mongoose.connect( 'mongodb+srv://user:user@cluster0-ha9ym.mongodb.net/test?retryWrites=true&w=majority',
 {useNewUrlParser:true,
   useUnifiedTopology: true 
 })
@@ -20,6 +20,7 @@ mongoose.connect( 'mongodb+srv://user:user@cluster0-ha9ym.mongodb.net/test?retry
 .catch((err) => console.log(err));
 var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
+var imageRouter = require('./routes/image');
 
 const cors = require('cors')
 
@@ -40,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
+app.use('/image', imageRouter);
 app.get('*',(req,res)=>{
   res.sendFile(path.join(__dirname,'public/index.html'))
   })
