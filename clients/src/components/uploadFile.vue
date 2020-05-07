@@ -6,7 +6,7 @@
     <div class="container">
         upload an image
     </div>
-    <div class="col s12 m10 l4 offset-l1 offset-m1  ">
+    <div class="col s12 m10 l4=8 offset-l1 offset-m1  ">
         <form @submit.prevent="sendFile" enctype="multipart/form-data" > 
                      <div class="card">
             <div class="card-action  white-text">
@@ -47,7 +47,7 @@
     <div class="col s12 m10 offset-m1 l2 ">
         
 <div class="card">
-<div class="card-content "   v-for="(file,index) in files" :keys="index">
+<div class="card-content "   v-for="(file,index) in files" :key="index">
 
 <div class="row">
                     {{index}}:       {{file.name}} 

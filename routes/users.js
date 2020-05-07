@@ -151,5 +151,14 @@ router.get('/profile',passport.authenticate('jwt',{
   
   
 })
+router.post('/order/:id',passport.authenticate('jwt',{
+  session:false
+}),(req,res,next) =>{
+      console.log(req.body)
+
+  
+  
+})
+
 
 module.exports = router;

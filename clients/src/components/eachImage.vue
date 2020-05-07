@@ -17,17 +17,33 @@
                                 <label for="imageName">Name</label>
                                 <input type="text" placeholder="Name" v-model="imageName">
                             </div> <br>
-                            <div class="form-field">
+                            <!-- <div class="form-field">
                                 <label for="imageCategory">Category</label>
                                 <input type="text" placeholder="Category" v-model="imageCategory">
-                            </div> <br>
+                            </div> <br> -->
                             <div class="form-field">
                                 <label for="imagePrice">Description</label>
                                 <input type="text" placeholder="Description" v-model="imageDescription">
                             </div> <br>
+                            <!-- <div class="form-field"> -->
+                               
+                                    <label for="Categories">Categories</label>
+<!-- <input type="text" v-model='country' class="form-control"> -->
+                            <div class="input-field">
+        <select v-model="imageCategory" name="status">
+          
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+            <option value="unpublished">Unpublished</option>
+       
+        </select>
+        <label for="status">Status</label>
+      </div>
+                            <!-- </div> -->
                             <div class="center form-field">
-                                <input type="submit" class="btn    waves-effect "  value="save">
-                            </div> <br>
+
+                                                    <button class="btn waves-effect waves-light"> save</button>
+                                                                                                        </div> <br>
                         
                             
                         </div>
@@ -41,15 +57,21 @@
 
 
 <script>
+
 import Api from '../../config/Api'
+import M from 'materialize-css'
+// import $ from 'jquery'
+
+
 export default {
     props:['id'],
     data(){
         return{
+            cat:'',
                 imageUrl:'',
                 imagePrice:'',
                 imageName:'',
-                imageCategory:'',
+                imageCategory:'cat',
                 imageDescription:''
         }
     },
@@ -69,10 +91,20 @@ export default {
                     }
                 })
 
-        }
+        },
+
     },
+//    mounted(){
+//     $(document).ready(function() {
+//     $('select').material_select();
+// });
+// },
 
     created(){
+         CKEDITOR.replace( 'body' ,{
+         plugins:'wysiwygarea,toolbar,basicstyles,link'
+     });
+        
         Api().get(`/admin/getUploadedFile/${this.id}`)
         .then(res=>{
             if(res.data.success) {
@@ -82,7 +114,15 @@ export default {
                    this.imageName = res.data.image.name
                    this.imageUrl = res.data.image.url
             }
+        }),
+        Api().get(`/admin/getCategories`)
+        .then(res=>{
+            if (res.data.success) {
+                    this.cat= res.data.cat
+                    console.log(res.data.cat)
+            }
         })
+
     }
 }
 </script>

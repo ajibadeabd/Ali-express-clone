@@ -77,12 +77,13 @@ const router = new Router({
       }
     },
     {
-      path: '/productpage',
-      name: 'productPage',
+      path: '/productpage/:id',
+      name: 'productpage',
       component: productpage,
       //  meta:{
       //   requiresAuth:true
-      // }
+      // },
+      props:true
     },
     {
       path: '/upload',

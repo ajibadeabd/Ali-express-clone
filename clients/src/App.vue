@@ -1,9 +1,13 @@
 <template>
   <div id="app">
-    <Navbar/>
+    <!-- <body>  -->
+  <Navbar/>
 
     <router-view class="h"/>
+    
     <Footer />
+    <!-- </body> -->
+  
   </div>
 </template>
 
@@ -26,6 +30,9 @@ export default {
     ,
     mounted(){
     m.AutoInit()
+  //    $(document).ready(function(){
+  //   $('select').formSelect();
+  // });
 
   }
 }

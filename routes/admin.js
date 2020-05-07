@@ -25,7 +25,7 @@ const storage = multer.diskStorage(
 //init uload
 const upload=multer({
   storage:storage,
-  limits:{fileSize:100000000000000000000000},
+  limits:{fileSize:100000000},
   fileFilter:(req,file,cb)=>{
       checkFileType(file,cb)
 
@@ -158,98 +158,44 @@ router.put('/editUploadedFile/:id', async function(req, res, next) {
              ) 
     });
  });
+// route for admin to add categories
+ router.post('/postCategories', async function(req, res, next) {
+   let category=req.body.category
+      Category.findOne({title:category})
+      .then(categories=>{
+        if (!categories) {
 
- router.post('/postCategory/:id', async function(req, res, next) {
-   let {category}=req.body
-
-   let newCat = new Category({title:category})
-   newCat.save()
-   return res.status(200).json({
-     msg:'category created'
-   })
+          let newCat = new Category({title:category})
+      newCat.save()
+      return res.status(201).json({
+        msg:'category created',
+        success:true
+      })
+          
+    }else{
+      
+      return res.status(400).json({
+        msg:'category already exist before',
+        success:false
+  })
+    }
  });
+ })
+// fetch all categories
+ router.get('/getCategories', async function(req, res, next) {
+      Category.find()
+      .then(cat=>{
+        return res.status(200).json({
+          count:cat.length,
+          cat,
+          success:true
+        })
+      })
 
+ })
 
  //route to sign in an admin by the superAdmin
-
-router.post('/signUp',passport.authenticate('jwt',{
-  session:false
-}), function(req, res, next) {
-  let {
-    userName,
-    password,
-    confirm_password,
-    email
-  } = req.body
-  if (password !== confirm_password) {
-    return res.status(400).json({
-      msg:'Password incorrect'
-    })
-    ;
-  }else{
-    Admin.findOne({
-      userName:userName
-    }).then((user)=>{
-      if(user) {
-      return res.status(400).json({
-          msg:"Username already taken" 
-      })
-      }else{
-        Admin.findOne({
-          email:email
-      })
-      .then((user)=>{
-        if(user) {
-         return res.status(400).json({
-            msg:"email  already been registerd. did you forget your password" 
-        })
-        
-        }else{
-          let newUser= new Admin({
-            userName,
-            email,
-            password,
-            
-            userType:'admin'
-            })
-            // console.log(newUser)
-            //  hash password
-             bcrypt.genSalt(10,(err,salt)=>{
-              bcrypt.hash(newUser.password,salt,(err,hash)=>{
-                  if(err) throw err
-                  newUser.password=hash;
-                  
-                  newUser.save()
-                  .then((user)=>{
-                      
-                    
-                      res.status(201).json({
-                          success:true,
-                          msg:`i am please to inform you that  ${user.userName} successfully registerd`
-                      })
-                     
-                    
-              
-                  }
-                  )
-                  .catch(err=>{
-                      res.json({
-                        error:err
-                        
-                      })
-                  })
-              })
-              })
-
-        }
-      })
-
-
-      }
-    })
-  }
-  
-});router.post('/signIn', function(req, res, next) {
+router.post('/signIn', function(req, res, next) {
   Admin.findOne({email:req.body.email})
   .then(user=>{
     if (!user) {

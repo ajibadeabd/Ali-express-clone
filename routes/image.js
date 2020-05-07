@@ -30,7 +30,7 @@ router.get('/:category', function (req, res, next) {
         }else{
             Images.find({category: category.title}, function(err, products) {
                 if(err) return console.log(err);
-                res.status(200).json(products);
+                return      res.status(200).json(products);
             });
         }
     });

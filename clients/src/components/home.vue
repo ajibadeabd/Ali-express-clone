@@ -391,277 +391,33 @@
   </div>
    </div>
 
-<div class="row hide-on-small-only">
+<div   class="row hide-on-small-only">
   
-  <div class="col s6 m4 l3">
-    <div class="card">
-      <div class="card-image">
-        
-<img class='materialboxed img-responsive responsive-img'
-      height="650"
-
- :src='require("../../public/Aliexpress/1778063442-142352068.jpg")'>
-
-      </div>
-    <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-    </div>
-     
-  </div>
-  <div class="col s6 m4 l3">
-    <div class="card">
-      <div class="card-image">
-         
-<img class='materialboxed img-responsive responsive-img'
-      height="650"
- :src='require("../../public/Aliexpress/-16588179501311857720.jpg")'>
 
 
-      </div>
-     <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-     
-    </div>
-      
-  </div>
   
-   <div class="col hide-on-small-only s6 m4 l3">
-    <div class="card">
-      <div class="card-image">
-  <img class='materialboxed img-responsive responsive-img'  
-      height="650"
-
-         :src='require("../../public/Aliexpress/1998726749-1297200811.jpg")'>
-      </div>
-       <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-             
-     
-    </div>
-      
-  </div>
-   <div class="col s6 m4 l3">
-    <div class="card">
-      <div class="card-image">
-<img class='materialboxed img-responsive responsive-img'
-      height="650"
- :src='require("../../public/Aliexpress/-10864522972053276252.jpg")'>
-
-
-      </div>
-     <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-    </div>
-      
-  </div>
-<div class="col s6 m4 l3">
-    <div class="card">
-      <div class="card-image">
-         <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-           :src='require("../../public/Aliexpress/-10864522972053276252.jpg")'>
-
-      </div>
-      <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-     
-    </div>
-      
-  </div>
-  <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-    
-  <div class="col s6 m4 l3">
-    <div class="card">
-      <div class="card-image">
-<img class='materialboxed img-responsive responsive-img' 
-      height="650"
- :src='require("../../public/Aliexpress/-819298404-1456101062.jpg")'>
-
-      </div>
-     <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-    </div>
-     
-  </div>
-  <div class="col s6 m4 l3">
-    <div class="card">
-      <div class="card-image">
-<img class='materialboxed img-responsive responsive-img' 
-      height="650"
- :src='require("../../public/Aliexpress/1289640842-2033801803.jpg")'>
-
-      </div>
-      <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-    </div>
-      
-  </div>
-  <div class="col s6 m4 l3">
+  <div v-for="(image,index) in images" :key='index' class="col s6 m4 l3">
     <div class="card">
       <div class="card-image">
 <img class='materialboxed img-responsive responsive-img'
       height="650"
 
-          :src='require("../../public/saved/watch.jpg")'>
+          :src='image.url'>
       </div>
      <div class="card-content">
                  <div class="center row">
                    
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
+                <h4 class="btn  col white black-text  center-align s5 m5 l5  ">
+                 ${{image.price}}</h4>
+                  <h4 class="btn  col white black-text  center-align s5 m5 l5  ">
+                  <strike>  ${{image.price *1.5}}</strike></h4>
+                  <router-link 
+                   :to="{name:'productpage', params:{id:image._id}}">
+
                 <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
 
                   </router-link>
+
                    <router-link to='/product'>
                 <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
 
@@ -686,32 +442,40 @@
 </template>
 <script>
 import M from 'materialize-css'
+import Api from '../../config/Api'
 
 export default {
     data(){
         return {
      
-            
+            images:'',
         }
     },
     methods:{
 //       
-    },created(){
-     
-
-      
     }
 ,
-    mounted(){
-      document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.scrollspy','.materialboxed','.slider');
-    // var ele = document.querySelectorAll('.slider');
-    // var elems = document.querySelectorAll('.materialboxed');
-    var instances = M.ScrollSpy.init(elems, options);
-    // var instances = M.Materialboxed.init(elems, options);
-    // var instanc = M.Slider.getInstance(ele, options);
-  });
+created(){
+  Api().get('/admin/getUploadedFile').then(res=>{
+    if(res.data.success) {
+      this.images=res.data.images
+
     }
+  })
+},
+mounted() {
+  
+},
+  //   mounted(){
+  //     document.addEventListener('DOMContentLoaded', function() {
+  //   var elems = document.querySelectorAll('.scrollspy','.materialboxed','.slider');
+  //   // var ele = document.querySelectorAll('.slider');
+  //   // var elems = document.querySelectorAll('.materialboxed');
+  //   var instances = M.ScrollSpy.init(elems, options);
+  //   // var instances = M.Materialboxed.init(elems, options);
+  //   // var instanc = M.Slider.getInstance(ele, options);
+  // });
+  //   }
 }
 </script>
 <style scoped>

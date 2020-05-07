@@ -6,7 +6,7 @@
 
 
 <div class='row'>
-    <div v-for="(file,index) in files.images" :keys='file.id'
+    <div v-for="(file,index) in files.images" :key='index.id'
      class="col xl3 m6 l4  s10 ">
         <div class="col s12 m12 l12 xl12">
             <div class="">
@@ -28,7 +28,7 @@
 
     </div>
 </div>
-
+;,'''p;'
 
 </div>
 

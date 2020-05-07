@@ -5,7 +5,8 @@
     <div class="col s10 m6  l4">
         <div class=" card-image  s12">
             <img   class=' padding materialboxed img-responsive responsive-img'
-             width="" src='../../public/f7c18fd8-4b92-42df-9fe1-96734de0c8d7.jpg'
+             width="" 
+              :src="image.url"
               alt=""></div>
     </div>
     <div class="col  padding l5">
@@ -23,8 +24,12 @@
 <div class="divider "></div>
 <div class="padding container row">
 <span class="padding">
-    <strong>$2800</strong>
-    </span> <br><span  class='padding' style="text-decoration:line-through;">$9000</span><br> <span class="red padding">-30%</span>
+    <strong>${{image.price *qty}} </strong>
+    </span> <br><span  class='padding' style="text-decoration:line-through;">${{image.price * 1.5 * qty }}</span><br>
+    
+     <span class="light-blue padding">
+        -${{(image.price-(image.price /1.5))/image.price *100}}
+     </span>
 
 </div>
 <div class="row">
@@ -48,7 +53,9 @@
             <div class="card">
                 <div class="card-title">
             <img   class='materialboxed img-responsive responsive-img'
-             width="110" src="../../public/f7c18fd8-4b92-42df-9fe1-96734de0c8d7.jpg"
+             width="110" 
+              :src="image.url"
+             
               alt="">
               
 
@@ -59,8 +66,8 @@
             <div class="card">
                 <div class="card-title">
             <img   class='materialboxed img-responsive responsive-img'
-             width="110" src="../../public/f7c18fd8-4b92-42df-9fe1-96734de0c8d7.jpg"
-
+             width="110" :src="image.url"
+             
               alt="">
               
 
@@ -71,8 +78,8 @@
             <div class="card">
                 <div class="card-title">
             <img   class='materialboxed img-responsive responsive-img'
-             width="110" src="../../public/f7c18fd8-4b92-42df-9fe1-96734de0c8d7.jpg"
-
+             width="110" :src="image.url"
+             
               alt="">
               
 
@@ -83,8 +90,8 @@
             <div class="card">
                 <div class="card-title">
             <img   class='materialboxed img-responsive responsive-img'
-             width="110" src="../../public/f7c18fd8-4b92-42df-9fe1-96734de0c8d7.jpg"
-
+             width="110" :src="image.url"
+             
               alt="">
               
 
@@ -95,8 +102,8 @@
             <div class="card">
                 <div class="card-title">
             <img   class='materialboxed img-responsive responsive-img'
-             width="110" src="../../public/f7c18fd8-4b92-42df-9fe1-96734de0c8d7.jpg"
-
+             width="110" :src="image.url"
+             
               alt="">
               
 
@@ -114,7 +121,13 @@
                       <div>
                           <br>
                             <span>
-                          <i class="material-icons">add</i> 4 <i class="material-icons">remove</i> 
+                          <i class="material-icons" @click="increase(qty)">add</i> 
+                          
+                                <strong>
+                                    {{qty}}
+                                </strong>
+
+                          <i class="material-icons" @click="remove(qty)">remove</i> 
                             </span>
                       </div>
                   </div>
@@ -122,11 +135,7 @@
     <div class="row">
         <h5 class="container">
             please select the country you want to ship it to <br>
-        <!-- <span class="btn red ">Add To Cart</span> -->
-        <router-link to="/order" class="btn red">
-            Add To Cart
-        </router-link>
-        <!-- <span class="btn orange "> </span> -->
+        <div class="btn red " @click="addToCart">Add To Cart</div>
         <router-link to="/order" class="btn orange">
             By now
         </router-link>
@@ -145,7 +154,7 @@
             <div class="card">
                 <div class="card-title">
             <img   class='materialboxed img-responsive responsive-img'
-             width="220" src="../../public/f7c18fd8-4b92-42df-9fe1-96734de0c8d7.jpg"
+             width="220" src="http://res.cloudinary.com/ajibade/image/upload/v1588688372/files/r57caixhud0icpittxic.jpg"
 
               alt="">
                 </div>
@@ -155,7 +164,7 @@
             <div class="card">
                 <div class="card-title">
             <img   class='materialboxed img-responsive responsive-img'
-             width="220" src="../../public/f7c18fd8-4b92-42df-9fe1-96734de0c8d7.jpg"
+             width="220" src="http://res.cloudinary.com/ajibade/image/upload/v1588688375/files/e9thva9iyjkw5doxqt5s.jpg"
 
               alt="">
                 </div>
@@ -167,7 +176,7 @@
             <img   class='materialboxed img-responsive responsive-img'
              width="220"
              height="200"
-              src="../../public/f7c18fd8-4b92-42df-9fe1-96734de0c8d7.jpg"
+              src="http://res.cloudinary.com/ajibade/image/upload/v1588688726/files/xtwqnwoealoktgcowhsk.jpg"
 
               alt="">
                 </div>
@@ -178,12 +187,57 @@
     </div>
 </template>
 <script>
+import Api from '../../config/Api'
 export default {
+    props:['id'],
     data(){
         return{
-
+image:'',
+qty:'1'
         }
+    },
+    created(){
+  Api().get(`/admin/getUploadedFile/${this.id}`).then(res=>{
+    if(res.data.success) {
+      this.image=res.data.image
+
     }
+  })
+},
+
+methods:{
+    addToCart(){
+      let productDetail = {
+          price : this.image.price,
+          qty : this.qty,
+      }
+Api().post(`/users/order/${this.id}`,productDetail).then(res=>{
+    if(res.data.success) {
+      this.image=res.data.image
+
+    }
+  })
+
+    },
+    increase(id){
+       id++
+       this.qty = id++
+        
+    },
+    remove(id){
+        if(id>1) {
+            id--
+
+            this.qty = id
+
+        }else{
+        //   id--
+       this.qty = id
+        
+        }
+   
+    }
+}
 }
 </script>
 <style scoped>

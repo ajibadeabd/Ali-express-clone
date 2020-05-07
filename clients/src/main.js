@@ -7,7 +7,13 @@ import store from './store'
 import axios from 'axios'
 import materializeCss from 'materialize-css'
 import 'materialize-css/dist/css/materialize.min.css'
+import CKEditor from 'ckeditor4-vue'
+import $ from 'jquery'
+
+Vue.use( CKEditor );
 Vue.use(materializeCss)
+Vue.use($)
+
 
 
 Vue.config.productionTip = false

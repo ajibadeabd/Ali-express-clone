@@ -1,14 +1,12 @@
 <template>
 <div>
-   <div class="space row">
-     <div class="col s12 m6 l3 ">
-       <div class="card">
+   <!-- <div class="space row">
+     <div class="col  s12 m6 l3 ">
+       <div class="card h">
          <div class="card-content">
 
   
-  <!-- <div class="row"> -->
     
-    <!-- <div class="col hide-on-small-only m3 l2"> -->
       <ul class="section table-of-contents">
         <li><a href="#introduction"><h5>My profile</h5></a></li>
         <li><a href="#introduction">My post</a></li>
@@ -17,19 +15,15 @@
         <li><a href="#structure">Account settings</a></li>
         <li><a href="#initialization">Edit settings</a></li>
       </ul>
-    <!-- </div>
-  </div> -->
 
          </div>
        </div>
      </div>
-     <!-- <div class="col l10"> -->
 <div class="col s12 m6 l9">
   <div class="card">
-     <!-- <div class="card-panesdl"> -->
  <div class="row valign-wrapper">
             <div class="col s2">
-              <img src="https://materializecss.com//images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+              <img src="https://materializecss.com//images/yuna.jpg" alt="" class="circle responsive-img"> 
             </div>
             <div class="col s10">
               <span class="black-text">
@@ -53,14 +47,12 @@
               
             </div>
           </div>
-     <!-- </div> -->
          
         
   </div>
 </div>
-     <!-- </div> -->
-   </div>
-   <div class="row">
+   </div> -->
+   <!-- <div class="row">
      <div class="col  s12 m6 l3">
        <div class="card">
          
@@ -84,7 +76,7 @@
         </div>
        </div>
      </div>
-   </div>
+   </div> -->
     
 
       
@@ -126,5 +118,9 @@ margin: 10px;
 }
 .space{
 margin:10px}
+.h{
+  /* min-height:%; */
+  color: red;
+}
 
 </style>
