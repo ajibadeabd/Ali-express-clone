@@ -79,9 +79,9 @@
                       <div>
                           <br>
                             <span>
-                          <i class="material-icons" @click='increase(order._id)'>
+                          <i class="material-icons" @click='increase(order,order._id)'>
                               add</i>{{order.qty}}
-                              <i  class="material-icons"  @click='updateOrder' >remove</i> 
+                              <i  class="material-icons"  @click='remove(order,order._id)' >remove</i> 
                             </span>
                       </div>
                   </div>
@@ -153,21 +153,43 @@ export default {
     }
   })
         },
-        inrease(order_id){
-
-            this.updateOrder(order,data)
+        placeOrder(){
+            
         },
-        remove(order_id){
+        increase(order,id){
+            order.qty++
+            let data = {
+                qty:order.qty,
+                totalPrice:order.price*order.qty
+            }
+            this.updateOrder(id,data)
+        },
+        remove(order,id){
+            if (order.qty<=1){
+                 let data = {
+                totalPrice:order.price*order.qty,
+                qty:order.qty
+            }
+            this.updateOrder(id,data)
 
-            this.updateOrder(order,data)
+            }else{
+                order.qty--
+            let data = {
+                totalPrice:order.price*order.qty,
+                qty:order.qty
+            }
+            this.updateOrder(id,data)
+
+            }
+            
         },
         // /orderUpdate/:id
        updateOrder(order_id,data){
-              Api().post(`/users/orderUpdate/${order_id}`,data).then(res=>{
+              Api().put(`/users/orderUpdate/${order_id}`,data).then(res=>{
     if(res.data.success) {
-        //   this.orders=res.data.products
-        // this.cartNumber=res.data.cart
-        // this.cartNumber=this.cartNumber
+          this.orders=res.data.products
+        this.cartNumber=res.data.cart
+        this.cartNumber=this.cartNumber
 
     }
   })

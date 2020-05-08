@@ -235,10 +235,27 @@ router.delete('/order/:id',passport.authenticate('jwt',{
 
   })
 })
-router.post('/orderUpdate/:id',passport.authenticate('jwt',{
+router.put('/orderUpdate/:id',passport.authenticate('jwt',{
   session:false
 }),(req,res,next) =>{
-console.log(req.body)
+// console.log(req.body)
+console.log(req.body.qty*2)
+Order.findOneAndUpdate(
+  {_id:req.params.id} 
+  ,req.body,
+
+  {new:true},
+  (err,id)=>{
+
+          Order.find({owner:req.user.userName})
+    .then(user=>{
+      res.status(200).json({
+        success:true,
+        products:user,
+        cart:user.length
+      })
+    }) 
+  });
 })
 
 
