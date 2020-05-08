@@ -6,6 +6,8 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 const passport = require('passport')
 const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require("connect-mongo")(session);
 var app = express();
 
 //map global promise - get rid of warning
@@ -38,6 +40,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret:'anything',
+  resave:false,
+  saveUninitialized:false,
+  store:new MongoStore({
+     mongooseConnection:mongoose.connection
+    }),
+  cookie:{maxAge:180*60*1000}
+}));
 
 app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
@@ -55,7 +66,8 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  res.locals.session= res.session;
+  
   // render the error page
   res.status(err.status || 500);
   res.render('error');

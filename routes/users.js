@@ -4,6 +4,7 @@ var router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const User = require('../models/user')
+const Order = require('../models/order')
 const passport = require('passport')
 const  {verifyUser} = require('../helper/Auth')
 
@@ -154,10 +155,90 @@ router.get('/profile',passport.authenticate('jwt',{
 router.post('/order/:id',passport.authenticate('jwt',{
   session:false
 }),(req,res,next) =>{
-      console.log(req.body)
+      // console.log(req.body)
+      const {price,image,name,qty,tQty}=req.body
+      Order.findOne({
+                  owner:req.user.userName,
+                  
+      }).then(user=>{
+       if (user) {
+        Order.findOne({
+          productName:name
+        }).then(product=>{
+                  if (product){
+                    
+                    res.status(201).json({
+                      message:'item added',
+                      success:false
+                    })
+                  
+                  }else{
+                    newOrder = new  Order({
+                      productName:name,
+                      price:price,
+                      qty:qty,
+                      totalPrice:tQty,
+                      image:image,
+                      owner:req.user.userName
+                    })
+                    newOrder.save()
+                    res.status(201).json({
+                       message:'successfully added',
+                       success: false
+                    })
+                  }
+        })
+       }else{
+        newOrder = new  Order({
+          productName:name,
+          price:price,
+          qty:qty,
+          totalPrice:tQty,
+          image:image,
+          owner:req.user.userName
+        })
+        newOrder.save()
+        res.status(201).json({
+           message:'successfully addedd',
+           success: false
+        })
+      }
+      })
+  
+})
+router.get('/order',passport.authenticate('jwt',{
+  session:false
+}),(req,res,next) =>{
+  Order.find({owner:req.user.userName})
+  .then(user=>{
+    res.status(200).json({
+      success:true,
+      products:user,
+      cart:user.length
+    })
+  })
+})
+router.delete('/order/:id',passport.authenticate('jwt',{
+  session:false
+}),(req,res,next) =>{
+  console.log(req.params.id)
+  Order.findByIdAndRemove({_id:req.params.id})
+  .then(user=>{
+    Order.find({owner:req.user.userName})
+    .then(user=>{
+      res.status(200).json({
+        success:true,
+        products:user,
+        cart:user.length
+      })
+    })
 
-  
-  
+  })
+})
+router.post('/orderUpdate/:id',passport.authenticate('jwt',{
+  session:false
+}),(req,res,next) =>{
+console.log(req.body)
 })
 
 

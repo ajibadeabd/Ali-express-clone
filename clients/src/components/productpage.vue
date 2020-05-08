@@ -8,6 +8,11 @@
              width="" 
               :src="image.url"
               alt=""></div>
+              <div class="card-content">
+                  <div class="btn-large light-blue center">
+                      {{image.name}}
+                  </div>
+              </div>
     </div>
     <div class="col  padding l5">
                 <h6>
@@ -137,7 +142,7 @@
             please select the country you want to ship it to <br>
         <div class="btn red " @click="addToCart">Add To Cart</div>
         <router-link to="/order" class="btn orange">
-            By now
+            Orders
         </router-link>
         
         </h5>
@@ -193,7 +198,8 @@ export default {
     data(){
         return{
 image:'',
-qty:'1'
+qty:'1',
+tQty:''
         }
     },
     created(){
@@ -208,8 +214,11 @@ qty:'1'
 methods:{
     addToCart(){
       let productDetail = {
+          name:this.image.name,
           price : this.image.price,
           qty : this.qty,
+          image : this.image.url,
+          tQty :this.image.price * this.qty
       }
 Api().post(`/users/order/${this.id}`,productDetail).then(res=>{
     if(res.data.success) {

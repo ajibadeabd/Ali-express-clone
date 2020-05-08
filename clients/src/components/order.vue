@@ -6,14 +6,14 @@
         <div class="col m12 s12 l12">
             <div class=" padding  card ">
             <div class=" ">
-                <h4>Shopping Cart (22)</h4>
+                <h4>Shopping Cart ({{cartNumber}})</h4>
 
             </div>
              
                  <!-- <form > -->
          <div class="">
       <p>
-        <input type="checkbox"  v-model='buy1' class="container filled-in" id="filled-in-box">
+        <input type="checkbox"  v-model='buy' class="container filled-in" id="filled-in-box">
         <label for="filled-in-box">Select All</label>
       </p>
     </div>
@@ -21,15 +21,15 @@
 
         </div>
         </div>
-        <div class="col  m12 l12">
+        <div v-for="(order,index) in orders" :key='index' class="col  m12 l12">
             <div class="card padding">
                     <ul>
             <li>
                     
     <span>
                
-        <input type="checkbox" v-model='buy' class="container filled-in" id="filled-in-boxa">
-        <label for="filled-in-boxa">Kord technology store</label>
+        <input type="checkbox" class="container filled-in" :id="order._id">
+        <label :for="order._id">Kord technology store</label>
       
     </span>
     <!-- <span class='center' >
@@ -54,7 +54,7 @@
                       <div class="padding" >
                <img   class='materialboxed img-responsive responsive-img'
              width=""
-             :src='require("../../public/f7c18fd8-4b92-42df-9fe1-96734de0c8d7.jpg")'>
+             :src='order.image'>
                       </div>
                   </div>
                   <div class="l7 m7 s7 description col">
@@ -62,9 +62,11 @@
                         <ul>
                           <li>description of product</li>
 
-                            <li>US $26.72 </li>
+                           price:<span>{{order.price}} </span> <br>
+                          Total price:<span>{{order.totalPrice}} </span> 
+
                             <li class="linethrough">
-                                US $37.64
+                                {{order.price  * 1.5}}
                             </li>-29%
                             <li>
                           Shipping: US $10.11 via Singapore Post Estimated Delivery Time:22-43 Days>
@@ -73,11 +75,13 @@
                       </div>
                   </div>
                   <div class="l2  description col">
-                      <i class="material-icons ">delete</i>
+                      <i class="material-icons " @click="deleteOrder(order._id)">delete</i>
                       <div>
                           <br>
                             <span>
-                          <i class="material-icons">add</i> 4 <i class="material-icons">remove</i> 
+                          <i class="material-icons" @click='increase(order._id)'>
+                              add</i>{{order.qty}}
+                              <i  class="material-icons"  @click='updateOrder' >remove</i> 
                             </span>
                       </div>
                   </div>
@@ -116,13 +120,58 @@
     </div>
 </template>
 <script>
+import Api from '../../config/Api'
 export default {
     data(){
         return{
         buy:true,
-        buy1:true,
+        orders:'',
+        cartNumber:'',
+        message:'',
+        allProductPrice:'',
+
         }
 
+    },
+    created(){
+        Api().get(`/users/order`).then(res=>{
+    if(res.data.success) {
+        this.orders=res.data.products
+        this.cartNumber=res.data.cart
+
+    }
+  })
+    },
+    methods:{     
+        deleteOrder(order_id){
+              Api().delete(`/users/order/${order_id}`).then(res=>{
+    if(res.data.success) {
+          this.orders=res.data.products
+        this.cartNumber=res.data.cart
+        this.cartNumber=this.cartNumber
+
+    }
+  })
+        },
+        inrease(order_id){
+
+            this.updateOrder(order,data)
+        },
+        remove(order_id){
+
+            this.updateOrder(order,data)
+        },
+        // /orderUpdate/:id
+       updateOrder(order_id,data){
+              Api().post(`/users/orderUpdate/${order_id}`,data).then(res=>{
+    if(res.data.success) {
+        //   this.orders=res.data.products
+        // this.cartNumber=res.data.cart
+        // this.cartNumber=this.cartNumber
+
+    }
+  })
+        },
     }
 }
 </script>

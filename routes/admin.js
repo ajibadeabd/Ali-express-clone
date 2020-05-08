@@ -140,6 +140,9 @@ router.get('/getUploadedFile/:id', async function(req, res, next) {
   })
    
  });
+
+ 
+
 // gett each images save on the cloud
 router.put('/editUploadedFile/:id', async function(req, res, next) {
   

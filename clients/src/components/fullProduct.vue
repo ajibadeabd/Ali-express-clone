@@ -3,7 +3,7 @@
 <div class="main row">
     <div class="row card">
         <div class="card-image">
-            <img src="../../public/first.jpg" class='materialboxed img-responsive responsive-img' alt="">
+            <img src="../../public/first.jpg" class='materialboxed top img-responsive responsive-img' alt="">
         </div>
 <!-- tabs -->
          <div class="row">
@@ -24,606 +24,38 @@
         
         
         <div class="row main">
-             
-                 
-             <div class=" col m4 s6 l3">
+          <div v-for="(image,index) in images" :key='index' class="col s6 m4 l3">
+
         <div class="   padding card">
-
             <div class="card-image">
-
                 <img class='materialboxed img-responsive responsive-img'
       height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
+   :src='image.url'>
             </div>
-            
              <div class="card-content">
                  <div class="center row">
-                   
                 <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
+                ${{image.price}}</h4>
                   <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
+                  <strike>  ${{image.price *1.5}}</strike></h4>
+                 <router-link 
+                   :to="{name:'productpage', params:{id:image._id}}">
+
+                <h4 class="btn  col   center-align s10 m10 l10 blue waves-effect">buy</h4>
 
                   </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
 
-                  </router-link>
-
+                   <!-- <router-link to="/order">
+                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">
+                     Buy now
+                </h4>
+            
+        </router-link> -->
                     </div>
             </div>
-           
         </div>
-        
-
     </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-      <div class=" col m4 s6 l3">
-        <div class="   padding card">
-
-            <div class="card-image">
-
-                <img class='materialboxed img-responsive responsive-img'
-      height="650"
-
-        
-  :src='require("../../public/saved/bata1.png")'>
-            </div>
-            
-             <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
-
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
-
-                  </router-link>
-
-                    </div>
-            </div>
-           
-        </div>
-        
-
-    </div>
-    
-               
-            
+  
         </div>
     </div>
 </div>
@@ -636,17 +68,19 @@ import m from 'materialize-css'
 export default {
     data(){
         return{
-
+images:''
         }
        
     },
-     created(){
-          // Api.get('/admin/')
-        },
-    mounted(){
-      let el = el
-      var instance = M.Tabs.init(el, options);
+          created(){
+  Api().get('/admin/getUploadedFile').then(res=>{
+    if(res.data.success) {
+      this.images=res.data.images
+
     }
+  })
+},
+   
 }
 </script>
 <style scoped>
@@ -659,5 +93,38 @@ export default {
     margin: .1%;
     padding-top: 15px;
 }
+img{
+  width: 420px ! important;
+  height: 230px ! important;
+}
+.mm{
+   width: 490px ! important;
+  height: 730px ! important;
+}
+.mmm{
+   height: 230px ! important;
+  width: 900px ! important;
+}
 
+  .npm{
+    padding: 0px ! important;
+    margin: 0px ! important;
+  }
+ .smallImg{
+   width: 70px ! important;
+   height: 70px ! important;
+   margin-top: 10px ! important;
+ }
+.smallPhone{
+  width: 150px ! important ;
+  height: 150px ! important ;
+
+  
+}
+.top{
+  width: 1900px ! important ;
+  height: 300px ! important ;
+
+  
+}
 </style>
