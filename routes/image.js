@@ -18,23 +18,23 @@ const passport = require('passport')
 
 
 
-//display all products in a specific Category
-router.get('/:category', function (req, res, next) {
-    Category.findOne({title: req.params.category}, function (err, category) {
+// //display all products in a specific Category
+// router.get('/:category', function (req, res, next) {
+//     Category.findOne({title: req.params.category}, function (err, category) {
 
-        if (err) {
-            return res.status(404).json({
-                msg:'image not found',
-                success:false
-            })
-        }else{
-            Images.find({category: category.title}, function(err, products) {
-                if(err) return console.log(err);
-                return      res.status(200).json(products);
-            });
-        }
-    });
-  });
+//         if (err) {
+//             return res.status(404).json({
+//                 msg:'image not found',
+//                 success:false
+//             })
+//         }else{
+//             Images.find({category: category.title}, function(err, products) {
+//                 if(err) return console.log(err);
+//                 return      res.status(200).json(products);
+//             });
+//         }
+//     });
+//   });
   
   
 
