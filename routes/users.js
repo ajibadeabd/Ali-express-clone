@@ -239,7 +239,6 @@ router.put('/orderUpdate/:id',passport.authenticate('jwt',{
   session:false
 }),(req,res,next) =>{
 // console.log(req.body)
-console.log(req.body.qty*2)
 Order.findOneAndUpdate(
   {_id:req.params.id} 
   ,req.body,
