@@ -297,7 +297,6 @@ totalQty-=req.body.qty;
 //  console.log(totalQty)
 //  console.log(items[product._id])
  delete items[id]
- console.log('kk')
     
   // 
 
@@ -323,61 +322,87 @@ totalQty-=req.body.qty;
 router.put('/orderUpdate/:id',passport.authenticate('jwt',{
   session:false
 }),(req,res,next) =>{
-console.log(req.body)
-Order.findOneAndUpdate(
-  {_id:req.params.id} 
-  ,req.body,
-
-  {new:true},
-  (err,id)=>{
-    // if(req.body.check) {
-//       Oda.findOne({user:req.user.userName})
-//   .then(user=>{
-//       if (user){
-// let items = user.items;
-// let totalQty = user.totalQty;
-// let overAllPrice = user.overAllPrice;
-// Order.findOne({_id:req.params.id})
-// .then(product=>{
-//   if(req.body.check){
-//      let  price=product.price
-//      if(req.body.status=='dec'){
-//       totalQty-=1;
-//       overAllPrice-=product.price
-//       items[req.params.id].qty--
-//       items[req.params.id].totalPrice-=
-//       items[req.params.id].price
-//      }else{
-//       totalQty+=1;
-//       overAllPrice+=price
-//       items[req.params.id].qty++
-//       items[req.params.id].totalPrice+=
-//       items[req.params.id].price
-//      }
-//   }
-//   Oda.findOne({user:req.user.userName})
-//   .then(prod=>{
-//     prod.items=items
-//     prod.user=req.user.userName,
-//     prod.totalQty=totalQty,
-//     prod.totalPrice=totalPrice,
-//     prod.save()
-//   })
-
-  Order.find({owner:req.user.userName})
+  let  id=req.params.id
+  console.log(id)
+  console.log(req.body)
+  Image.findById({_id:req.params.id})
+  .then(product=>{
+      price=product.price
+      Oda.findOne({user:req.user.userName})
+        .then(user=>{
+         
+      let items = user.items ;
+      let totalQty = user.totalQty;
+      let overAllPrice = user.overAllPrice 
+      let storedItem= items[id];
+      
+    if(req.body.status=='inc'){
+      overAllPrice+=price;
+      totalQty+=1
+      storedItem.qty+=1
+      storedItem.totalPrice+=price
+    }
+    if(req.body.status=='dec'){
+      overAllPrice-=price;
+      totalQty-=1
+      storedItem.qty-=1
+      storedItem.totalPrice=price
+    }
+      // overAllPrice+=price;
+      // totalQty+=1
+      // storedItem.qty+=1
+      // storedItem.totalPrice+=price
+      console.log(storedItem)
+      Oda.findOne({user:req.user.userName})
     .then(user=>{
-      res.status(200).json({
+      user.totalQty=totalQty;
+      user.overAllPrice=overAllPrice;
+      user.user=req.user.userName;
+      user.items=items;
+      user.save()
+      res.status(201).json({
         success:true,
-        products:user,
-        cart:user.length
+        product:user
       })
     })
-// })
-//     }
+    })
+    
+
+
+  })
+//   Oda.findOne({user:req.user.userName})
+//   .then(user=>{
+//     if (user){
+//       let items = user.items ;
+// let totalQty = user.totalQty;
+// let overAllPrice = user.overAllPrice 
+// let storedItem= items[id];
+// // let qty=product.qty;
+// totalQty--;
+//  overAllPrice-=req.body.totalPrice
+// //  console.log(totalQty)
+// //  console.log(items[product._id])
+//  delete items[id]
+    
+//   // 
+
+//   Oda.findOne({user:req.user.userName})
+//   .then(user=>{
+    
+//     user.user=req.user.userName
+//     user.items=items
+//     user.overAllPrice=overAllPrice
+//     user.totalQty=totalQty
+//       user.save()
+//       res.status(200).json({
+//         success:true,
+//         product:user
+//     }) 
+    
 //     })
-// jj
-         
-  });
+//   // 
+//       }
+//   })
 })
 
 router.get('/orderToCart/:id', passport.authenticate('jwt', {

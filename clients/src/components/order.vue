@@ -87,9 +87,9 @@
           <div>
               <br>
                 <span>
-              <i class="material-icons" @click='increase(final.id)'>
+              <i class="material-icons" @click='increase(final)'>
                   add</i>{{final.qty}}
-                  <i  class="material-icons"  @click='remove(final.id)' >remove</i> 
+                  <i  class="material-icons"  @click='remove(final)' >remove</i> 
                 </span>
           </div>
       </div>
@@ -180,76 +180,52 @@ export default {
     }
   })
         },
-//         placeOrder(order_id){
-//             if (document.getElementById(`${order_id}`).checked) {
-//                              Api().get(`/users/orderToCart/${order_id}`).then(res=>{
-//                 if(res.data.success) {
-//                     this.finalProduct=res.data.product
-//                 }
+        increase(product){
+            // product.qty++
+            let data = {
+                qty:product.qty,
+                price:product.price,
+                status:'inc'
+
+            }
+            this.updateOrder(product,data)
+        },
+        remove(product){
+
+            if (product.qty<=1){
+                 let data = {
+                totalPrice:order.price*order.qty,
+                qty:order.qty,
+                status:'dec'
+
+            }
+            // this.updateOrder(id,data)
+
+            }else{
+                // product.qty--
+            let data = {
+                qty:product.qty,
+                price:product.price,
+               
+                status:'dec'
+
+
+
+            }
+            this.updateOrder(product,data)
+
+            }
             
-//             })
-//             }else{
-//                            Api().get(`/users/deleteFromCart/${order_id}`).then(res=>{
-//                 if(res.data.success) {
-//                     this.finalProduct=res.data.product
-//                 }
-            
-//             })
-//             }
-           
-            
-//         },
-//         increase(order,id){
-//             order.qty++
-//            let check= document.getElementById(`${id}`).checked
-//             let data = {
-//                 qty:order.qty,
-//                 totalPrice:order.price*order.qty,
-//                 check:check,
-//                 status:'inc'
-
-//             }
-//             this.updateOrder(id,data)
-//         },
-//         remove(order,id){
-//            let check= document.getElementById(`${id}`).checked
-
-//             if (order.qty<=1){
-//                  let data = {
-//                 totalPrice:order.price*order.qty,
-//                 qty:order.qty,
-//                 status:'dec'
-
-//             }
-//             // this.updateOrder(id,data)
-
-//             }else{
-//                 order.qty--
-//             let data = {
-//                 totalPrice:order.price*order.qty,
-//                 qty:order.qty,
-//                 check:check,
-//                 status:'dec'
-
-
-
-//             }
-//             this.updateOrder(id,data)
-
-//             }
-            
-//         },
+        },
 //         // /orderUpdate/:id
-//        updateOrder(order_id,data){
-//               Api().put(`/users/orderUpdate/${order_id}`,data).then(res=>{
-//     if(res.data.success) {
-//           this.orders=res.data.products
-//         this.cartNumber=res.data.cart
-//         this.cartNumber=this.cartNumber
+       updateOrder(product,data){
+              Api().put(`/users/orderUpdate/${product.id}`,data).then(res=>{
+    if(res.data.success) {
+         this.finalProduct=res.data.product
 
-//     }
-//   })
-//         },
+    }
+  })
+        },
     }
 }
 </script>
