@@ -346,7 +346,7 @@ router.put('/orderUpdate/:id',passport.authenticate('jwt',{
       overAllPrice-=price;
       totalQty-=1
       storedItem.qty-=1
-      storedItem.totalPrice=price
+      storedItem.totalPrice-=price
     }
       // overAllPrice+=price;
       // totalQty+=1
