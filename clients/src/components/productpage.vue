@@ -198,7 +198,7 @@ export default {
     data(){
         return{
 image:'',
-qty:'1',
+qty:1,
 tQty:''
         }
     },
@@ -214,11 +214,9 @@ tQty:''
 methods:{
     addToCart(){
       let productDetail = {
-          name:this.image.name,
-          price : this.image.price,
+         
           qty : this.qty,
-          image : this.image.url,
-          tQty :this.image.price * this.qty
+          
       }
 Api().post(`/users/order/${this.id}`,productDetail).then(res=>{
     if(res.data.success) {

@@ -9,26 +9,32 @@
     <div v-for="(file,index) in files.images" :key='index.id'
      class="col xl3 m6 l4  s10 ">
         <div class="col s12 m12 l12 xl12">
-            <div class="">
+            <div class="card-image">
     <img :src="file.url" class="responsive-img img-responsive" alt="">
 </div>
-<div v-if="file.name" >
+<div  class='' v-if="file.name" >
+  <span class='center'>
 {{file.name}}
+
+</span>
+</div>
+
 <!-- {{file.id}} -->
-           <router-link  
+<div class="card-action">
+<router-link  
             class="btn col light-blue s10 m10 l10 xl10 left waves-effects waves-light"
              :to="{name:'image', params:{id:file._id}}">
                <div>EDIT</div>
            </router-link>
-
-
 </div>
+           
+
+
         
         </div>
 
     </div>
 </div>
-;,'''p;'
 
 </div>
 

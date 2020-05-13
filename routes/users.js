@@ -4,7 +4,11 @@ var router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const User = require('../models/user')
+const Cart = require('../models/cart')
 const Order = require('../models/order')
+const Category = require('../models/categoryies')
+const Image = require('../models/image')
+const Oda = require('../models/cart')
 const passport = require('passport')
 const  {verifyUser} = require('../helper/Auth')
 
@@ -155,61 +159,118 @@ router.get('/profile',passport.authenticate('jwt',{
 router.post('/order/:id',passport.authenticate('jwt',{
   session:false
 }),(req,res,next) =>{
-      // console.log(req.body)
-      const {price,image,name,qty,tQty}=req.body
-      Order.findOne({
-                  owner:req.user.userName,
-                  
-      }).then(user=>{
-       if (user) {
-        Order.findOne({
-          productName:name
-        }).then(product=>{
-                  if (product){
-                    
-                    res.status(201).json({
-                      message:'item added',
-                      success:false
-                    })
-                  
-                  }else{
-                    newOrder = new  Order({
-                      productName:name,
-                      price:price,
-                      qty:qty,
-                      totalPrice:tQty,
-                      image:image,
-                      owner:req.user.userName
-                    })
-                    newOrder.save()
-                    res.status(201).json({
-                       message:'successfully added',
-                       success: false
-                    })
-                  }
-        })
-       }else{
-        newOrder = new  Order({
-          productName:name,
-          price:price,
-          qty:qty,
-          totalPrice:tQty,
-          image:image,
-          owner:req.user.userName
-        })
-        newOrder.save()
-        res.status(201).json({
-           message:'successfully addedd',
-           success: false
-        })
-      }
-      })
+      const {qty}=req.body
+      Oda.findOne({user:req.user.userName})
+      .then(user=>{
+        if (user){
+          let items = user.items ;
+          console.log(items.length)
+    let totalQty = user.totalQty;
+    let overAllPrice = user.overAllPrice ;
+
+    Image.findOne({_id:req.params.id})
+  .then(product=>{
+  let storedItem= items[product._id]
+  if(!storedItem) {
+   let storedItem=items[product._id]={
+         item:{
+           name:product.name,
+           image:product.url,
+          owner:req.user.userName,
+
+        },
+        qty:qty,
+        id:req.params.id,
+
+        price:product.price,
+        totalPrice:qty * product.price 
+        
+  }
+  console.log(qty)
+  totalQty+=qty;
+  overAllPrice+=storedItem.totalPrice;}
+  if(storedItem) {
+       storedItem.qty += qty,
+       storedItem.price=product.price,
+       storedItem.item.image=product.url,
+       storedItem.totalPrice=storedItem.totalPrice +(qty * product.price) 
+       storedItem.id=req.params.id 
+
   
-})
+
+  totalQty+=qty ;
+  overAllPrice+=(qty * product.price)
+}
+  
+
+ 
+    
+  Oda.findOne({user:req.user.userName})
+  .then(user=>{
+    if (user) {
+      user.user=req.user.userName;
+      user.items=items;
+      user.totalQty=totalQty;
+      user.overAllPrice=overAllPrice;
+      user.save()
+    }
+  
+      // console.log(user)
+      res.status(200).json({
+          success:true,
+          product:user
+      })
+  })
+  })
+        }else{
+    let items =  {};
+    let totalQty =  0;
+    let overAllPrice =  0;
+
+    Image.findOne({_id:req.params.id})
+  .then(product=>{
+  let storedItem= items[product._id]
+  if(!storedItem) {
+    storedItem=items[product._id]={
+         item:{
+          name:product.name,
+          image:product.url,
+          owner:req.user.userName
+        },
+        qty:qty,
+        price:product.price,
+         id:req.params.id ,
+
+        totalPrice:qty * product.price ,
+  }}
+  totalQty+=storedItem.qty;
+   overAllPrice+=storedItem.totalPrice;
+    
+  Oda.findOne({user:req.user.userName})
+  .then(user=>{
+    
+      let Order = ({
+        user:req.user.userName,
+        items:items,
+        overAllPrice:overAllPrice,
+        totalQty:totalQty,
+        })
+        newOrder = new Oda(Order)
+      newOrder.save()
+      res.status(200).json({
+          success:true,
+          product:user
+      })
+  })
+  })}
+  })
+
+  
+      })
 router.get('/order',passport.authenticate('jwt',{
   session:false
 }),(req,res,next) =>{
-  Order.find({owner:req.user.userName})
+  Oda.find({owner:req.user.userName})
   .then(user=>{
     res.status(200).json({
       success:true,
@@ -222,9 +283,65 @@ router.delete('/order/:id',passport.authenticate('jwt',{
   session:false
 }),(req,res,next) =>{
   console.log(req.params.id)
-  Order.findByIdAndRemove({_id:req.params.id})
-  .then(user=>{
-    Order.find({owner:req.user.userName})
+  console.log(req.body)
+  // Order.findByIdAndRemove({_id:req.params.id})
+  // .then(user=>{
+  //   Order.find({owner:req.user.userName})
+  //   .then(user=>{
+  //     res.status(200).json({
+  //       success:true,
+  //       products:user,
+  //       cart:user.length
+  //     })
+  //   })
+
+  // })
+})
+router.put('/orderUpdate/:id',passport.authenticate('jwt',{
+  session:false
+}),(req,res,next) =>{
+console.log(req.body)
+Order.findOneAndUpdate(
+  {_id:req.params.id} 
+  ,req.body,
+
+  {new:true},
+  (err,id)=>{
+    // if(req.body.check) {
+//       Oda.findOne({user:req.user.userName})
+//   .then(user=>{
+//       if (user){
+// let items = user.items;
+// let totalQty = user.totalQty;
+// let overAllPrice = user.overAllPrice;
+// Order.findOne({_id:req.params.id})
+// .then(product=>{
+//   if(req.body.check){
+//      let  price=product.price
+//      if(req.body.status=='dec'){
+//       totalQty-=1;
+//       overAllPrice-=product.price
+//       items[req.params.id].qty--
+//       items[req.params.id].totalPrice-=
+//       items[req.params.id].price
+//      }else{
+//       totalQty+=1;
+//       overAllPrice+=price
+//       items[req.params.id].qty++
+//       items[req.params.id].totalPrice+=
+//       items[req.params.id].price
+//      }
+//   }
+//   Oda.findOne({user:req.user.userName})
+//   .then(prod=>{
+//     prod.items=items
+//     prod.user=req.user.userName,
+//     prod.totalQty=totalQty,
+//     prod.totalPrice=totalPrice,
+//     prod.save()
+//   })
+
+  Order.find({owner:req.user.userName})
     .then(user=>{
       res.status(200).json({
         success:true,
@@ -232,30 +349,193 @@ router.delete('/order/:id',passport.authenticate('jwt',{
         cart:user.length
       })
     })
-
-  })
-})
-router.put('/orderUpdate/:id',passport.authenticate('jwt',{
-  session:false
-}),(req,res,next) =>{
-// console.log(req.body)
-Order.findOneAndUpdate(
-  {_id:req.params.id} 
-  ,req.body,
-
-  {new:true},
-  (err,id)=>{
-
-          Order.find({owner:req.user.userName})
-    .then(user=>{
-      res.status(200).json({
-        success:true,
-        products:user,
-        cart:user.length
-      })
-    }) 
+// })
+//     }
+//     })
+// jj
+         
   });
 })
+
+router.get('/orderToCart/:id', passport.authenticate('jwt', {
+  session: false
+}),(req,res,next) =>{
+  Oda.findOne({user:req.user.userName})
+  .then(user=>{
+      if (user){
+let items = user.items;
+let totalQty = user.totalQty;
+let overAllPrice = user.overAllPrice;
+let pId=user.pId
+Order.findOne({_id:req.params.id})
+.then(product=>{
+let storedItem= items[product._id]
+// console.log(items)
+// console.log(product._id)
+if(!storedItem) {
+  storedItem=items[product._id]={
+       item:{name:product.productName,
+        owner:product.owner
+      },
+      qty:product.qty,
+      totalPrice:product.totalPrice,
+      price:product.price,
+}}
+ totalQty+=storedItem.qty;
+ overAllPrice+=storedItem.totalPrice
+ pId.push(req.params.id)
+// console.log(totalQty)
+// console.log(overAllPrice)
+
+Oda.findOne({user:req.user.userName})
+.then(user=>{
+user.user=req.user.userName;
+    user.items=items;
+    user.totalQty=totalQty;
+    user.overAllPrice=overAllPrice;
+    user.pId=pId
+    user.save()
+    // console.log(user)
+    res.status(200).json({
+        success:true,
+        product:user
+    })
+})
+})
+
+    
+      }
+      else{
+let items = {};
+let totalQty = 0;
+let overAllPrice = 0;
+// Order.findById(req.params.id)
+Order.findOne({_id:req.params.id})
+.then(product=>{
+  // console.log(product)
+
+  let storedItem= items[product._id]
+  // console.log(items)
+  // console.log(product._id)
+  if(!storedItem) {
+    storedItem=items[product._id]={
+         item:{name:product.productName,
+          owner:product.owner
+        },
+        qty:product.qty,
+        totalPrice:product.totalPrice,
+        price:product.price
+  }}
+   totalQty+=storedItem.qty;
+   overAllPrice+=storedItem.totalPrice
+  console.log(items.length)
+  // console.log(overAllPrice)
+  let Order = ({
+    user:req.user.userName,
+    items:items,
+    overAllPrice:overAllPrice,
+    totalQty:totalQty,
+    pId:[req.params.id]
+    })
+    newOrder = new Oda(Order)
+    newOrder.save()
+})
+Oda.findOne({user:req.user.userName},(err,product)=>{
+  // console.log(product)
+  res.status(200).json({
+    success:true,
+    product:product
+})
+})
+
+      }
+  }).catch(err=>{
+      res.status(500).json({
+                error:err,
+      })
+  })
+// 
+
+
+});
+
+
+router.get('/deleteFromCart/:id', passport.authenticate('jwt', {
+  session: false
+}),(req,res,next) =>{
+  Oda.findOne({user:req.user.userName})
+  .then(user=>{
+      if (user){
+let items = user.items;
+let totalQty = user.totalQty;
+let overAllPrice = user.overAllPrice;
+
+      Order.findOne({_id:req.params.id})
+      .then(product=>{
+      let storedItem= items[product._id];
+      // let qty=product.qty;
+      totalQty-=storedItem.qty;
+       overAllPrice-=storedItem.totalPrice
+      //  console.log(totalQty)
+      //  console.log(items[product._id])
+       delete items[product._id]
+      //  console.log(items)
+      Oda.findOne({user:req.user.userName})
+.then(user=>{
+user.user=req.user.userName;
+    user.items=items;
+    user.totalQty=totalQty;
+    user.overAllPrice=overAllPrice
+    user.save()
+    // console.log(user)
+    res.status(200).json({
+        success:true,
+        product:user
+    })
+})
+
+      })
+     
+
+
+    }
+
+
+})
+})
+//get all order
+router.get('/allOrder',passport.authenticate('jwt', {
+  session: false
+}),(req,res,next) =>{
+    console.log('product')
+
+  Oda.findOne({user:req.user.userName})
+  .then(product=>{
+    res.status(200).json({
+      success:true,
+      product:product,
+      jj:'kk',
+      // cart:product.length
+      // items:product.items,
+
+  })
+  })
+})
+
+
+//delete all image
+router.get('/image',(req,res,next) =>{
+    console.log('product')
+
+  User.deleteMany()
+  .then(product=>{
+    res.status(200).json({
+      success:true,
+      product:product
+  })
+  })
+})
+
 
 
 module.exports = router;

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
     price:{
-        type:String,
+        type:Number,
         required:true
 
     },
@@ -12,13 +12,18 @@ const orderSchema = new Schema({
         required:true
 
     },
-    qty:{
+    id:{
         type:String,
         required:true
 
     },
+    qty:{
+        type:Number,
+        required:true
+
+    },
     totalPrice:{
-        type:String,
+        type:Number,
         required:true
 
     },

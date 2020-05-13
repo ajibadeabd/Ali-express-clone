@@ -145,7 +145,7 @@
   <div class="row ">
     <div class="col l8">
     <div class="row">
-    <div class="col s12  m12 l12">
+    <div class="col s12 hide-on-med-and-down m12 l12">
       <div class="card">
         <div class="card-image">
            <img class='materialboxed mmm img-responsive responsive-img'
@@ -335,25 +335,68 @@
 <img class='materialboxed img-responsive responsive-img'
       height="650"
 
-          :src='require("../../public/saved/watch.jpg")'>
+   src='http://res.cloudinary.com/ajibade/image/upload/v1589195513/files/qa7ruxo8obbbzwztyt3a.jpg'>
       </div>
      <div class="card-content">
-                 <div class="center row">
-                   
-                <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                 $3000</h4>
-                  <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
-                  <strike> $4000</strike></h4>
-                  <router-link to='/productpage'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">buy</h4>
+               
+                    <router-link to=/product>
+                    <i class="material-icons right">more_vert</i>
+                    </router-link>
+            </div>
+     
+    </div>
+   
+  </div>
+     <div class="col s6 m4 l3">
+    <div class="card">
+      <div class="card-image">
+<img class='materialboxed img-responsive responsive-img'
+      height="650"
 
-                  </router-link>
-                   <router-link to='/product'>
-                <h4 class="btn  col   center-align s5 m5 l5 blue waves-effect">more</h4>
+         src='http://res.cloudinary.com/ajibade/image/upload/v1589194169/files/bbb8qfmthu8pww47jm10.jpg'>
+      </div>
+     <div class="card-content">
+               
+                    <router-link to=/product>
+                    <i class="material-icons right">more_vert</i>
+                    </router-link>
+            </div>
+     
+    </div>
+   
+  </div>
+     <div class="col s6 m4 l3">
+    <div class="card">
+      <div class="card-image">
+<img class='materialboxed img-responsive responsive-img'
+      height="650"
 
-                  </router-link>
+     src='http://res.cloudinary.com/ajibade/image/upload/v1589194173/files/tcc396uhhtlwpqth8jxa.jpg'>
+      </div>
+     <div class="card-content">
+               
+                    <router-link to=/product>
+                    <i class="material-icons right">more_vert</i>
+                    </router-link>
+            </div>
+     
+    </div>
+   
+  </div>
+     <div class="col s6 m4 l3">
+    <div class="card">
+      <div class="card-image">
+<img class='materialboxed img-responsive responsive-img'
+      height="650"
 
-                    </div>
+         src=
+         'http://res.cloudinary.com/ajibade/image/upload/v1589194169/files/yobbyn2magba3f5ootqm.jpg'>
+      </div>
+     <div class="card-content">
+               
+                    <router-link to=/product>
+                    <i class="material-icons right">more_vert</i>
+                    </router-link>
             </div>
      
     </div>
@@ -368,7 +411,10 @@
           :src='require("../../public/saved/watch.jpg")'>
       </div>
      <div class="card-content">
-                 <div class="center row">
+        <router-link to=/product>
+                    <i class="material-icons right">more_vert</i>
+                    </router-link>
+                 <!-- <div class="center row">
                    
                 <h4 class="btn  col white black-text  center-align s5 m5 l5  waves-effect">
                  $3000</h4>
@@ -383,7 +429,7 @@
 
                   </router-link>
 
-                    </div>
+                    </div> -->
             </div>
      
     </div>

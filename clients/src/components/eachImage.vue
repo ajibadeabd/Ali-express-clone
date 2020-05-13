@@ -2,13 +2,16 @@
     <div>
 
                 <div class="row">
-                    <form @submit="editImage">
-
-                            <div class="col xl4 l4 m6 s12 offset-xl4 offset-l4 offset-m3">
-                        <div class="card">
-                            <div class="card-image">
+                            <div class="col xl5 l5 m5 s12 offset-xl1 offset-l1 offset-m1">
+                                <div class="card-image">
                                      <img :src="imageUrl" class="responsive-img" alt="">
                             </div>
+                                </div>
+                            <div class="col xl5 l5 m5 s12 offset-xl1 offset-l1 offset-m1">
+                    <form @submit.prevent="editImage">
+
+                        <div class="card">
+                            
                             <div class="form-field">
                                 <label for="imagePrice">Price</label>
                                 <input type="text" placeholder="Price" v-model="imagePrice">
@@ -32,12 +35,14 @@
                             <div class="input-field">
         <select v-model="imageCategory" name="status">
           
-            <option value="public">Public</option>
-            <option value="private">Private</option>
-            <option value="unpublished">Unpublished</option>
+            <option value="football">football</option>
+            <option value="wears">wears</option>
+            <option value="kids">Unpublished</option>
+            <option value="accessories">accessories</option>
+            <option value="electronics">shoe</option>
+            <option value="electronics">electronics</option>
        
         </select>
-        <label for="status">Status</label>
       </div>
                             <!-- </div> -->
                             <div class="center form-field">
@@ -47,8 +52,9 @@
                         
                             
                         </div>
-                    </div>
                     </form>
+
+                    </div>
                     
                 </div>
 
@@ -89,6 +95,8 @@ export default {
                     if(res.data.success){
 
                     }
+            this.$router.push({name:'AllImages'})
+
                 })
 
         },
