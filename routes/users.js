@@ -279,23 +279,46 @@ router.get('/order',passport.authenticate('jwt',{
     })
   })
 })
-router.delete('/order/:id',passport.authenticate('jwt',{
+router.post('/orderm/:id',passport.authenticate('jwt',{
   session:false
 }),(req,res,next) =>{
-  console.log(req.params.id)
+ let  id=req.params.id
   console.log(req.body)
-  // Order.findByIdAndRemove({_id:req.params.id})
-  // .then(user=>{
-  //   Order.find({owner:req.user.userName})
-  //   .then(user=>{
-  //     res.status(200).json({
-  //       success:true,
-  //       products:user,
-  //       cart:user.length
-  //     })
-  //   })
+  Oda.findOne({user:req.user.userName})
+  .then(user=>{
+    if (user){
+      let items = user.items ;
+let totalQty = user.totalQty;
+let overAllPrice = user.overAllPrice 
+let storedItem= items[id];
+// let qty=product.qty;
+totalQty-=req.body.qty;
+ overAllPrice-=req.body.totalPrice
+//  console.log(totalQty)
+//  console.log(items[product._id])
+ delete items[id]
+ console.log('kk')
+    
+  // 
 
-  // })
+  Oda.findOne({user:req.user.userName})
+  .then(user=>{
+    
+    user.user=req.user.userName
+    user.items=items
+    user.overAllPrice=overAllPrice
+    user.totalQty=totalQty
+      user.save()
+      res.status(200).json({
+        success:true,
+        product:user
+    }) 
+    
+    })
+  // 
+      }
+  })
+  
 })
 router.put('/orderUpdate/:id',passport.authenticate('jwt',{
   session:false

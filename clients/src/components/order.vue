@@ -82,7 +82,7 @@
           </div>
       </div>
       <div class="l2  description col">
-          <i class="material-icons " @click="deleteOrder(final.id,final.totalPrice)">delete</i>
+          <i class="material-icons " @click="deleteOrder(final.id,final)">delete</i>
           
           <div>
               <br>
@@ -170,13 +170,13 @@ export default {
     },
     methods:{     
         deleteOrder(order_id,tp){
-            let total={totalPrice:tp}
-              Api().delete(`/users/order/${order_id}`,total).then(res=>{
+            let total={
+                totalPrice:tp.totalPrice,
+                qty:tp.qty
+                }
+              Api().post(`/users/orderm/${order_id}`,total).then(res=>{
     if(res.data.success) {
-          this.orders=res.data.products
-        this.cartNumber=res.data.cart
-        this.cartNumber=this.cartNumber
-
+                    this.finalProduct=res.data.product
     }
   })
         },
