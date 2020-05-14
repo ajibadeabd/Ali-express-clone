@@ -10,7 +10,7 @@
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <!-- <a href="#" data-target="mobile-demo" ><i class="material-icons">menu</i></a> -->
       
-    <a href="#!"  class="brand-logo">Logo</a>
+    <a href="#!"  class="brand-logo"></a>
     <ul class="right  hide-on-med-and-down">
         
          
@@ -24,11 +24,11 @@
            <i class="fa fa-user-plus" aria-hidden="true"></i> register
           </router-link>
         </li>
-       <li  v-if="isLoggedIn">
+       <!-- <li  v-if="isLoggedIn">
           <router-link to='/dashboard'>
            <i class="fa fa-user" ></i> dashboard
           </router-link>
-        </li>
+        </li> -->
         <li>
           <router-link to='/order'>
             <i class="material-icons">shopping_cart</i>
@@ -43,7 +43,7 @@
 
          </a>
           </li> -->
-            <li v-if="isLoggedIn">
+            <!-- <li v-if="isLoggedIn">
           <router-link to='/upload'>
            <i class="fa fa-upload"></i>  file
           </router-link>
@@ -52,7 +52,7 @@
           <router-link to='/AllImages'>
            <i class="fa fa-file"></i>  uploaded file
           </router-link>
-        </li>
+        </li> -->
         <li v-if="isLoggedIn"><a href="/logOut" @click.prevent="logOut">
          <i class="fa fa-sign-out"></i> Logout</a
          ></li>
@@ -109,7 +109,7 @@
            <i class="fa fa-sign-in"></i> login
           </router-link>
         </li>
-        <li v-if="isLoggedIn">
+        <!-- <li v-if="isLoggedIn">
           <router-link to='/upload'>
            <i class="fa fa-upload"></i>  file
           </router-link>
@@ -118,7 +118,7 @@
           <router-link to='/AllImages'>
            <i class="fa fa-file"></i>  uploaded file
           </router-link>
-        </li>
+        </li> -->
         <div class="divider"></div>
         <li v-if="!isLoggedIn">
           <router-link to='/register'>

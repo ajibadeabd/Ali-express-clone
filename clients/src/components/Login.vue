@@ -1,5 +1,6 @@
 <template>
 <div class="row">
+    {{message}}
     <div class="col s10 m6 l4  offset-l4 offset-s1 offset-m3">
         <form @submit.prevent="SignIn"> 
                      <div class="card">
@@ -62,7 +63,8 @@ export default {
         return{
             userName:'',
             email:'',
-            password:''
+            password:'',
+            message:''
             
 
         }
@@ -79,6 +81,7 @@ this.signIn(userInfo)
 .then(res=>{
     if (res.data.success) {
         this.$router.push('/order')
+        this.message='your have been logged in'
     }
 }).catch(error=>{
     console.log(error)
