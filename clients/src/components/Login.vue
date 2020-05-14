@@ -36,9 +36,15 @@
                   type="submit">Login</button>
 
                 </div> <br>
-
+                            <div>
+                                 Don't have  an Account <router-link to=/register>
+            sign Up
+        </router-link>
+                            </div>
+                        
             </div>
         </div>
+      
         </form>
        
     </div>

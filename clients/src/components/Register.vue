@@ -37,7 +37,11 @@
                   type="submit">Sign up</button>
 
                 </div> <br>
-
+                        <div>
+                                 Already created an  Account <router-link to=/login>
+            sign In
+        </router-link>
+                            </div>
             </div>
         </div>
         </form>

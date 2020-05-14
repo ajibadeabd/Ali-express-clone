@@ -120,9 +120,16 @@
                 <strong>Total</strong><span class="right">$ {{finalProduct.overAllPrice}}</span> <br>
                     <div class="row">
 
-                <h4 class="btn center-align col l4 offset-m4 offset-l4 offset-s4 s4 m4  blue wa
-                ves-effect">Buy (1)</h4>
-
+                <h4 class=" center-align col l8 offset-m2 offset-l2 offset-s8 s4 m8  waves-effect">
+                       <PayPal
+                       :amount="amount"
+                       currency="USD"   blue
+                        env="sandbox"
+                       :client="credentials"
+  
+  >
+</PayPal></h4>
+            
                     </div>
             </div>
            
@@ -130,23 +137,73 @@
 
     </div>
 </div>
+ <!-- <div class="row">
+     <div class='col l6 m6 s6 offset-l3 offset-s3 offset-m3'>
+                        <stripe-elements
+      ref="elementsRef"
+      :pk="'pk_test_TYooMQauvdEDq54NiTphI7jx'"
+      :amount="finalProduct.overAllPrice"
+      locale="eng"
+      @token="tokenCreated"
+      @loading="loading = $event"
+    >
+    </stripe-elements>
+    <button @click="submit">Pay ${{finalProduct.overAllPrice}}</button>
+              </div>
+          </div>    -->
+  <!-- <PayPal
+  amount="10.00"
+  currency="USD"
+  :client="credentials"
+  env="sandbox">
+</PayPal> -->
+  <div class="row">
+      <div class="col s6 m6 l6 xl6">
+          <!-- <PayPal
+  :amount="amount"
+  currency="USD"
+  env="sandbox"
+  :client="credentials"
+  
+  >
+</PayPal> -->
+      </div>
+  </div>
 
     </div>
 </template>
 <script>
 import Api from '../../config/Api'
+// import { StripeElements } from 'vue-stripe-checkout'
+// import { paypal } from 'vue-paypal-checkout'
+import PayPal from 'vue-paypal-checkout'
 export default {
     data(){
         return{
+            credentials:{
+                sandbox:'AQcHnnust9eEuaNZU_6B5btzQAspk2WgMzYqcajnGDYoeHPEtqR-4_H2GF02q_nAjBcDmWsuWK8tOtRK',
+                production:'<>',
+            },
         buy:true,
+        items:'',
         orders:'',
         cartNumber:'',
         message:'',
         finalProduct:'',
+    //     loading: false,
+    amount: '',
+    // publishableKey:'pk_test_TYooMQauvdEDq54NiTphI7jx', 
+    // token: null,
+    // charge: null,
+    // description:'money'
 
         }
 
     },
+    components:{
+        // StripeElements,
+        PayPal
+        },
     created(){
         Api().get(`/users/order`).then(res=>{
     if(res.data.success) {
@@ -160,6 +217,7 @@ export default {
                 if(res.data.product) {
                     this.finalProduct=res.data.product
                     this.cartNumber=res.data.length
+                    this.amount= JSON.stringify(res.data.product.overAllPrice)
                     console.log(res.data.product.items)
                 
                 }
@@ -168,7 +226,26 @@ export default {
                     })
 
     },
-    methods:{     
+    methods:{ 
+    //       submit () {
+    //   this.$refs.elementsRef.submit();
+    // },
+    // tokenCreated (token) {
+    //   this.token = token;
+    //   // for additional charge objects go to https://stripe.com/docs/api/charges/object
+    //   this.charge = {
+    //     source: token.id,
+    //     amount: this.finalProduct.overAllPrice, // the amount you want to charge the customer in cents. $100 is 1000 (it is strongly recommended you use a product id and quantity and get calculate this on the backend to avoid people manipulating the cost)
+    //     description: this.description // optional description that will show up on stripe when looking at payments
+    //   }
+    //   this.sendTokenToServer(this.charge);
+    // },
+    // sendTokenToServer (charge) {
+    //     console.log(charge)
+    //   // Send to charge to your backend server to be processed
+    //   // Documentation here: https://stripe.com/docs/api/charges/create
+  
+    // },    
         deleteOrder(order_id,tp){
             let total={
                 totalPrice:tp.totalPrice,
@@ -222,6 +299,7 @@ export default {
               Api().put(`/users/orderUpdate/${product.id}`,data).then(res=>{
     if(res.data.success) {
          this.finalProduct=res.data.product
+         this.items= res.data.product.items
 
     }
   })
