@@ -120,7 +120,7 @@
                 <strong>Total</strong><span class="right">$ {{finalProduct.overAllPrice}}</span> <br>
                     <div class="row">
 
-                <h4 class=" center-align col l8 offset-m2 offset-l2 offset-s8 s4 m8  waves-effect">
+                <h4 class=" center-align col l8 offset-m2 offset-l2 offset-xl2 offset-s2 s8 m8 waves-light  waves-effect">
                        <PayPal
                        :amount="amount"
                        currency="USD"   blue
