@@ -27,6 +27,14 @@
                 <br>
                     
                 </div> -->
+                <div v-if="!finalProduct.items" class="row s12   m12 l12">
+                    <div class="col s12 m12 l12 xl12">
+                    <h3 class='center'>
+                        No item in cart
+                    </h3>
+
+                    </div>
+                </div>
                 <div v-for="(final,index) in finalProduct.items" 
                 :key='index' class="col  m12 l12">
 <div class="card padding">
@@ -106,7 +114,7 @@
     </div>
     
     <div class="col   m12 s12 l4">
-        <div class="  padding card">
+        <div  v-if="finalProduct.items"  class="  padding card">
             <div class="card-content">
                 <h5 class="center">order summary</h5>
                 <div v-for="(final,index) in finalProduct.items" 
@@ -119,56 +127,50 @@
                
                 <strong>Total</strong><span class="right">$ {{finalProduct.overAllPrice}}</span> <br>
                     <div class="row">
+                        
+                        <h4 
+                        class=" center-align col l8 offset-m2 offset-l2 offset-xl2 offset-s2 s8 m8 waves-light  waves-effect">
+                        <div  v-if="finalProduct.overAllPrice" class='input-field'>
+                            <input type="email" placeholder="customer email" v-model="email"></div>
+                        
+                        </h4>
 
-                <h4 class=" center-align col l8 offset-m2 offset-l2 offset-xl2 offset-s2 s8 m8 waves-light  waves-effect">
-                       <PayPal
-                       :amount="amount"
-                       currency="USD"   blue
-                        env="sandbox"
-                       :client="credentials"
-  
-  >
-</PayPal></h4>
+                <h4  v-if="finalProduct.overAllPrice && email" class=" center-align col l8 offset-m2 offset-l2 offset-xl2 offset-s2 s8 m8 waves-light  waves-effect">
+                      <paystack
+        :amount="amount*100"
+        :email="email"
+        :paystackkey="paystackkey"
+        :reference="reference"
+        :callback="callback"
+        :close="close"
+        :embed="false"
+    >
+       <i class="fas fa-money-bill-alt"></i>
+       <i class="material-icons">money</i>
+       Make Payment
+    </paystack>
+                      
+                      
+</h4>
             
                     </div>
             </div>
            
+<div v-if="finalProduct.overAllPrice" class="center">
+    For testing purpose <br>
+    Card Number: 5060 6666 6666 6666 666 (Verve)
+Expiry Date: any date in the future
+CVV: 123
+PIN: 1234
+OTP: 123456
+</div>
+        
+
         </div>
 
     </div>
 </div>
- <!-- <div class="row">
-     <div class='col l6 m6 s6 offset-l3 offset-s3 offset-m3'>
-                        <stripe-elements
-      ref="elementsRef"
-      :pk="'pk_test_TYooMQauvdEDq54NiTphI7jx'"
-      :amount="finalProduct.overAllPrice"
-      locale="eng"
-      @token="tokenCreated"
-      @loading="loading = $event"
-    >
-    </stripe-elements>
-    <button @click="submit">Pay ${{finalProduct.overAllPrice}}</button>
-              </div>
-          </div>    -->
-  <!-- <PayPal
-  amount="10.00"
-  currency="USD"
-  :client="credentials"
-  env="sandbox">
-</PayPal> -->
-  <div class="row">
-      <div class="col s6 m6 l6 xl6">
-          <!-- <PayPal
-  :amount="amount"
-  currency="USD"
-  env="sandbox"
-  :client="credentials"
-  
-  >
-</PayPal> -->
-      </div>
-  </div>
+ 
 
     </div>
 </template>
@@ -176,22 +178,21 @@
 import Api from '../../config/Api'
 // import { StripeElements } from 'vue-stripe-checkout'
 // import { paypal } from 'vue-paypal-checkout'
-import PayPal from 'vue-paypal-checkout'
+import paystack from 'vue-paystack';
+// import PayPal from 'vue-paypal-checkout'
 export default {
     data(){
         return{
-            credentials:{
-                sandbox:'AQcHnnust9eEuaNZU_6B5btzQAspk2WgMzYqcajnGDYoeHPEtqR-4_H2GF02q_nAjBcDmWsuWK8tOtRK',
-                production:'<>',
-            },
-        buy:true,
+            paystackkey: "pk_test_362c609bb144252cb169b991e539a4458663c06b", //paystack public key
+          email: "", // Customer email
+          amount:0, // in kobo,
         items:'',
         orders:'',
         cartNumber:'',
         message:'',
         finalProduct:'',
     //     loading: false,
-    amount: '',
+    // amount: '',
     // publishableKey:'pk_test_TYooMQauvdEDq54NiTphI7jx', 
     // token: null,
     // charge: null,
@@ -202,7 +203,8 @@ export default {
     },
     components:{
         // StripeElements,
-        PayPal
+        // PayPal
+        paystack
         },
     created(){
         Api().get(`/users/order`).then(res=>{
@@ -217,7 +219,7 @@ export default {
                 if(res.data.product) {
                     this.finalProduct=res.data.product
                     this.cartNumber=res.data.length
-                    this.amount= JSON.stringify(res.data.product.overAllPrice)
+                    this.amount= res.data.product.overAllPrice
                     console.log(res.data.product.items)
                 
                 }
@@ -226,26 +228,41 @@ export default {
                     })
 
     },
+    computed: {
+      reference(){
+        let text = "";
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+ 
+        for( let i=0; i < 10; i++ )
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+ 
+        return text;
+      }
+    },
     methods:{ 
-    //       submit () {
-    //   this.$refs.elementsRef.submit();
-    // },
-    // tokenCreated (token) {
-    //   this.token = token;
-    //   // for additional charge objects go to https://stripe.com/docs/api/charges/object
-    //   this.charge = {
-    //     source: token.id,
-    //     amount: this.finalProduct.overAllPrice, // the amount you want to charge the customer in cents. $100 is 1000 (it is strongly recommended you use a product id and quantity and get calculate this on the backend to avoid people manipulating the cost)
-    //     description: this.description // optional description that will show up on stripe when looking at payments
-    //   }
-    //   this.sendTokenToServer(this.charge);
-    // },
-    // sendTokenToServer (charge) {
-    //     console.log(charge)
-    //   // Send to charge to your backend server to be processed
-    //   // Documentation here: https://stripe.com/docs/api/charges/create
-  
-    // },    
+        callback(response){
+            
+let responses={
+    response:response,
+    email:this.email
+}
+
+        // console.log(response)
+         Api().post(`/users/order`,responses)
+         .then(res=>{
+            //  console.log(res)
+            if(res.data.success &&  res.data.message){
+                    console.log(res.data.message)
+            }
+            this.$router.push('/success')
+
+         })
+        
+      },
+      close: function(){
+          console.log("Payment closed")
+      },
+       
         deleteOrder(order_id,tp){
             let total={
                 totalPrice:tp.totalPrice,
@@ -270,12 +287,9 @@ export default {
         remove(product){
 
             if (product.qty<=1){
-                 let data = {
-                totalPrice:order.price*order.qty,
-                qty:order.qty,
-                status:'dec'
+                console.log('order')
 
-            }
+            
             // this.updateOrder(id,data)
 
             }else{

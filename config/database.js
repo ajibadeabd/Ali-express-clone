@@ -5,6 +5,6 @@ if(process.env.NODE_ENV === 'production'){
 }
 else{
     module.exports =  {mongoURL:
-    'mongodb://localhost/Ali_express_clone'
+    URI = 'mongodb://localhost/Ali_express_clone'
 }
 }
