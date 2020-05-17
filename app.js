@@ -12,24 +12,14 @@ var app = express();
 
 //map global promise - get rid of warning
 mongoose.promise=global.promise;
-
-require('./config/passport')(passport)
-const db = require('./config/database')
-// mongoose.connect( 'mongodb://localhost/Ali_express_clone',
+mongoose.connect( 'mongodb://localhost/Ali_express_clone',
   
 // mongoose.connect( 'mongodb+srv://user:user@cluster0-ha9ym.mongodb.net/test?retryWrites=true&w=majority',
-mongoose.connect( db.mongoURL,
-
 {useNewUrlParser:true,
   useUnifiedTopology: true 
 })
 .then(()=> console.log(' DB connected'))
 .catch((err) => console.log(err));
-// mongoose.connect( db.mongoURL[0],
-//   {useNewUrlParser:true})
-//   .then(()=> console.log(db.mongoURL[1]))
-//   .catch((err) => console.log(err));
-  
 var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
 var imageRouter = require('./routes/image');

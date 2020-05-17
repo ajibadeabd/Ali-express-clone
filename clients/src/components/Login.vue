@@ -1,6 +1,5 @@
 <template>
 <div class="row">
-    {{message}}
     <div class="col s10 m6 l4  offset-l4 offset-s1 offset-m3">
         <form @submit.prevent="SignIn"> 
                      <div class="card">
@@ -9,13 +8,7 @@
                     <i class="fa fa-sign-in"></i> Login</h3>
             </div>
             <div class="card-content">
-                <div class="form-field">
-                    <label for="userName">Username</label>
-                     <input type="text"
-                     placeholder="userName" 
-                     v-model="userName" id="username">
-
-                </div> <br>
+               
                 <div class="form-field">
                     <label for="email">Email</label>
                      <input type="email"
@@ -38,7 +31,7 @@
 
                 </div> <br>
                             <div>
-                                 Don't have  an Account <router-link to=/register>
+                                 Don't have  aan Account <router-link to=/register>
             sign Up
         </router-link>
                             </div>
@@ -61,10 +54,8 @@ import Api from '../../config/Api'
 export default {
     data(){
         return{
-            userName:'',
             email:'',
             password:'',
-            message:''
             
 
         }
@@ -73,7 +64,7 @@ export default {
         ...mapActions(['signIn']),
         SignIn(){
             let userInfo={
-                userName:this.userName,
+                // userName:this.userName,
                 password:this.password,
                 email:this.email,
             }
@@ -81,13 +72,11 @@ this.signIn(userInfo)
 .then(res=>{
     if (res.data.success) {
         this.$router.push('/order')
-        this.message='your have been logged in'
     }
-}).catch(error=>{
-    console.log(error)
 })
 
        
-        }}
+        }
+        }
 }
 </script>

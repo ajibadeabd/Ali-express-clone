@@ -11,7 +11,7 @@ import dashboard from '@/components/dashboard'
 import upload from '@/components/uploadFile'
 import AllImages from '@/components/AllImages'
 import image from '@/components/eachimage'
-import success from '@/components/thankyou'
+import success from '@/components/end'
 import store from '../store'
 
 Vue.use(Router)
@@ -35,6 +35,15 @@ const router = new Router({
       meta:{
         requiresAuth:true
       }
+    },
+    {
+      path: '/success',
+      name: 'success',
+      component: success,
+       meta:{
+        requiresAuth:true
+      },
+      // props:true
     },
     {
       path: '/AllImages',
@@ -85,15 +94,6 @@ const router = new Router({
       //   requiresAuth:true
       // },
       props:true
-    },
-    {
-      path: '/success',
-      name: 'success',
-      component: success,
-       meta:{
-        requiresAuth:true
-      },
-      // props:true
     },
     {
       path: '/upload',

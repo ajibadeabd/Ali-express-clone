@@ -6,7 +6,7 @@
         <div class="col m12 s12 l12">
             <div class=" padding  card ">
             <div class=" ">
-                <h4>Shopping Cart ({{cartNumber}})</h4>
+                <h4>Shopping Carthghj ({{cartNumber}})</h4>
 
             </div>
              
@@ -191,12 +191,7 @@ export default {
         cartNumber:'',
         message:'',
         finalProduct:'',
-    //     loading: false,
-    // amount: '',
-    // publishableKey:'pk_test_TYooMQauvdEDq54NiTphI7jx', 
-    // token: null,
-    // charge: null,
-    // description:'money'
+    
 
         }
 
@@ -211,6 +206,8 @@ export default {
     if(res.data.success) {
         this.orders=res.data.products
         // this.cartNumber=res.data.cart
+          this.$store.commit('order_success')
+
     }
    
   }),
@@ -251,7 +248,7 @@ let responses={
          Api().post(`/users/order`,responses)
          .then(res=>{
             //  console.log(res)
-            if(res.data.success &&  res.data.message){
+            if(res.data.success){
                     console.log(res.data.message)
             }
             this.$router.push('/success')

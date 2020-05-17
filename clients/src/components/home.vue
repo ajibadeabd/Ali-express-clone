@@ -487,7 +487,9 @@
     
 </template>
 <script>
-import M from 'materialize-css'
+// import M from 'materialize-css'
+import m from 'materialize-css'
+
 import Api from '../../config/Api'
 
 export default {
@@ -509,9 +511,13 @@ created(){
     }
   })
 },
-mounted() {
-  
-},
+mounted(){
+    m.AutoInit()
+  //    $(document).ready(function(){
+  //   $('select').formSelect();
+  // });
+
+  }
   //   mounted(){
   //     document.addEventListener('DOMContentLoaded', function() {
   //   var elems = document.querySelectorAll('.scrollspy','.materialboxed','.slider');

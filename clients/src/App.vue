@@ -2,7 +2,8 @@
   <div id="app">
     <!-- <body>  -->
   <Navbar/>
-
+ <Error v-if="error" :msd="error"/>
+  <Success v-if="success" :msg="success" />
     <router-view class="h"/>
     
     <Footer />
@@ -13,7 +14,11 @@
 
 <script>
 import Navbar from './components/Navbar.vue'
+import Success from './components/success.vue'
+import Error from './components/error.vue'
 import Footer from './components/Footer.vue'
+import {mapGetters} from 'vuex'
+
 import m from 'materialize-css'
 
 export default {
@@ -23,9 +28,15 @@ export default {
 
     }
   },
+  computed:{
+...mapGetters(["error","success"])
+  },
   components:{
     Navbar,
-    Footer
+    Footer,
+    Error,
+    Success
+
     }
     ,
     mounted(){

@@ -104,7 +104,7 @@ router.post('/signUp', function(req, res, next) {
         msg:'no email found',
         success:false
       })
-    }
+    }else{}
     bcrypt.compare(req.body.password,user.password)
   .then(ismatch=>{
       if(ismatch){ 
@@ -370,36 +370,60 @@ router.put('/orderUpdate/:id',passport.authenticate('jwt',{
 
 
   })
+//   Oda.findOne({user:req.user.userName})
+//   .then(user=>{
+//     if (user){
+//       let items = user.items ;
+// let totalQty = user.totalQty;
+// let overAllPrice = user.overAllPrice 
+// let storedItem= items[id];
+// // let qty=product.qty;
+// totalQty--;
+//  overAllPrice-=req.body.totalPrice
+// //  console.log(totalQty)
+// //  console.log(items[product._id])
+//  delete items[id]
+    
+//   // 
 
+//   Oda.findOne({user:req.user.userName})
+//   .then(user=>{
+    
+//     user.user=req.user.userName
+//     user.items=items
+//     user.overAllPrice=overAllPrice
+//     user.totalQty=totalQty
+//       user.save()
+//       res.status(200).json({
+//         success:true,
+//         product:user
+//     }) 
+    
+//     })
+//   // 
+//       }
+//   })
 })
-
-
-
 
 
 router.post('/order',(req,res)=>{
-let{
-  email,response
-}=req.body
-  if(response.status=="success" && response.message=='Approved'){
-    Oda.deleteMany()
-  .then(del=>{
-    return res.status(200).json({
-      success:true,
-      message:`transaction successful, you will 
-      recieve an invoice through ${email} your mail,thanks for patronizing us`
+  let{
+    email,response
+  }=req.body
+    if(response.status=="success" && response.message=='Approved'){
+      Oda.deleteMany()
+    .then(del=>{
+      return res.status(200).json({
+        success:true,
+        message:`transaction successful, you will 
+        recieve an invoice through ${email} your mail,thanks for patronizing us`
+      })
     })
+    }
+    
   })
-  }
   
-})
-
-
-
-
-
-
-
+  
 
 router.get('/orderToCart/:id', passport.authenticate('jwt', {
   session: false
