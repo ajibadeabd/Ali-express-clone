@@ -192,6 +192,8 @@
     </div>
 </template>
 <script>
+import m from 'materialize-css'
+
 import Api from '../../config/Api'
 export default {
     props:['id'],
@@ -246,7 +248,14 @@ Api().post(`/users/order/${this.id}`,productDetail).then(res=>{
         }
    
     }
-}
+},
+mounted(){
+    m.AutoInit()
+  //    $(document).ready(function(){
+  //   $('select').formSelect();
+  // });
+
+  },
 }
 </script>
 <style scoped>
