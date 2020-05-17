@@ -12,7 +12,7 @@ export default new Vuex.Store({
       token:localStorage.getItem('token') || '',
         user: {},
         status:'',
-        msg:'',
+        success:null,
         error:null,
         admin:''
     },
@@ -20,30 +20,43 @@ export default new Vuex.Store({
         isLoggedIn: state=>!!state.token ,
           authState: state =>state.status,
           user: state =>state.user,
-          admin: state =>state.admin
+          admin: state =>state.admin,
+          error: state=>state.error,
+          success: state=>state.success
        },
     actions: {
         async signIn({commit},user) {
-            commit('auth_request');
+            // commit('auth_request');
+           try{
             let res= await Api().post('/users/signIn',user)
             if(res.data.success){
                 const token = res.data.token;
+                const msg = res.data.msg;
                 const user = res.data.user;
                 localStorage.setItem('token',token);
                 axios.defaults.headers.common["Authorization"] = token;
                 commit("auth_success",token,user)
                     }
-                    return res
+                    return res;
+           }catch(err){
+                commit('auth_error',err)
+           }
         },
         async signUp({commit},user) {
             commit('register_request');
-            let res= await Api().post('/users/signUp',
+            try{
+                let res= await Api().post('/users/signUp',
             user)
        if (res.data.success !== undefined) {
-           commit('register_success')
+           commit('register_success',res)
             
        }
-       return res
+       return res;
+            }catch(err){
+           commit('register_error',err)
+
+            }
+            
         },
         async signOut({commit}){
             await localStorage.removeItem('token')
@@ -54,19 +67,42 @@ export default new Vuex.Store({
         }
     },
     mutations:{
+        order_success(state,item){
+            state.success = ''
+        },
+        cart_success(state,item){
+            state.success = ` ${item} has been added to cart`
+        },
         register_request(state){
             state.status = 'loading'
         },
-        register_success(state){
+        register_success(state,res){
             state.status = 'success'
+            state.error=null
+          
+            state.success = res.data.msg
         },
         auth_request(state){
             state.status = 'loading'
+            state.error=null
+            state.success=null
+
         },
         auth_success(state,token,user){
             state.user = user
             state.status = 'success'
             state.token = token
+            state.success='you are now logged in'
+            state.error=null
+        },
+        auth_error(state,err){
+            state.error=err.response.data.msg
+            state.success=null
+
+
+        },
+        register_error(state,err){
+            state.error= err.response.data.msg
         },
         signOut(state){
 

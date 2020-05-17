@@ -140,7 +140,7 @@
     <div class="row">
         <h5 class="container">
             please select the country you want to ship it to <br>
-        <div class="btn red " @click="addToCart">Add To Cart</div>
+        <div class="btn red " @click="addToCart(image.name)">Add To Cart</div>
         <router-link to="/order" class="btn orange">
             Orders
         </router-link>
@@ -212,7 +212,7 @@ tQty:''
 },
 
 methods:{
-    addToCart(){
+    addToCart(name){
       let productDetail = {
          
           qty : this.qty,
@@ -221,6 +221,8 @@ methods:{
 Api().post(`/users/order/${this.id}`,productDetail).then(res=>{
     if(res.data.success) {
       this.image=res.data.image
+          this.$store.commit('cart_success',name)
+
 
     }
   })

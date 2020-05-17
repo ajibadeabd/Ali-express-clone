@@ -104,7 +104,7 @@ router.post('/signUp', function(req, res, next) {
         msg:'no email found',
         success:false
       })
-    }
+    }else{}
     bcrypt.compare(req.body.password,user.password)
   .then(ismatch=>{
       if(ismatch){ 
@@ -404,6 +404,26 @@ router.put('/orderUpdate/:id',passport.authenticate('jwt',{
 //       }
 //   })
 })
+
+
+router.post('/order',(req,res)=>{
+  let{
+    email,response
+  }=req.body
+    if(response.status=="success" && response.message=='Approved'){
+      Oda.deleteMany()
+    .then(del=>{
+      return res.status(200).json({
+        success:true,
+        message:`transaction successful, you will 
+        recieve an invoice through ${email} your mail,thanks for patronizing us`
+      })
+    })
+    }
+    
+  })
+  
+  
 
 router.get('/orderToCart/:id', passport.authenticate('jwt', {
   session: false
