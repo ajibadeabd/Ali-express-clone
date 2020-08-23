@@ -56,6 +56,8 @@ export default {
         return{
             email:'',
             password:'',
+        loading:'hide'
+
             
 
         }
@@ -68,11 +70,14 @@ export default {
                 password:this.password,
                 email:this.email,
             }
+            this.loading=''
 this.signIn(userInfo)
 .then(res=>{
     if (res.data.success) {
         this.$router.push('/order')
     }
+}).catch(err=>{
+            this.loading='hide'
 })
 
        

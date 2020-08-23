@@ -42,6 +42,10 @@
             sign In
         </router-link>
                             </div>
+                              <br>
+                             <div class='progress'  :class="loading">
+      <div class="indeterminate"></div>
+  </div>
             </div>
         </div>
         </form>
