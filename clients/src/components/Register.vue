@@ -67,7 +67,9 @@ export default {
             userName:'',
             email:'',
             confirm_password:'',
-            password:''
+            password:'',
+        loading:'hide'
+
 
         }
     },
@@ -80,6 +82,7 @@ export default {
                 password:this.password,
                 email:this.email,
             }
+            this.loading=''
 this.signUp(userInfo)
 .then(res=>{
     if (res.data.success) {
@@ -87,6 +90,8 @@ this.signUp(userInfo)
     }
 }).catch(error=>{
     console.log(error)
+            this.loading='hide'
+
 })
 
     
