@@ -2,8 +2,8 @@
   <div id="app">
     <!-- <body>  -->
   <Navbar/>
- <Error v-if="error" :msd="error"/>
-  <Success v-if="success" :msg="success" />
+ <Error />
+  <Success  />
     <router-view class="h"/>
     
     <Footer />

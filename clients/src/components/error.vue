@@ -1,28 +1,45 @@
 <template>
-    <div class="alert container alert-danger">
-{{msd}}
+    <div class="red center lighten-2">
+
+
+{{error}}
+
+
     </div>
 </template>
-
 <script>
 export default {
-    props:['msd'],
     data(){
         return{
+        }
+    },
+    computed:{
+        error(){
+            return this.$store.getters.error
+        }
+    },
+    watch:{
+        '$store.getters.error'(){
+            if(this.$store.getters.error) {
 
+                setTimeout((req,res,next)=>{
+                this.$store.state.error=''
+                },6000)
+            }
         }
     }
 }
-
 </script>
 
 <style scoped>
-
-.alert-danger{
-    color: #fff;
-    background-color: red;
+.red{
+   border-radius: 5px;
+    font-size: 3vh;
+    margin: 20px ;
+    text-transform: uppercase;
 }
-.alert{
-    border-radius:0px;
+div.red{
+    margin: 0px;
+    padding: opx;
 }
 </style>
