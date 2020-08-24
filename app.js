@@ -17,7 +17,6 @@ dotenv.config()
 mongoose.promise=global.promise;
 // mongoose.connect( process.env.localdb,
 mongoose.connect( process.env.atlasdb,
-// mongoose.connect( 'mongodb+srv://user:user@cluster0-ha9ym.mongodb.net/test?retryWrites=true&w=majority',
 {useNewUrlParser:true,
   useUnifiedTopology: true 
 })

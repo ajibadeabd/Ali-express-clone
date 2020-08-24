@@ -109,7 +109,7 @@ export default new Vuex.Store({
             state.error=null
             state.status=""
             state.token=""
-            state.user=""
+            state.success="successfully logged out"
         }
     },
    

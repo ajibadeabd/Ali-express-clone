@@ -6,7 +6,7 @@
         <div class="col m12 s12 l12">
             <div class=" padding  card ">
             <div class=" ">
-                <h4>Shopping Cart </h4>
+                <h4>Shopping Cart</h4>
 
             </div>
              
