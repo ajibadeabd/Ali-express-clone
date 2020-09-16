@@ -15,8 +15,9 @@ dotenv.config()
 
 //map global promise - get rid of warning
 mongoose.promise=global.promise;
-// mongoose.connect( process.env.localdb, 
-mongoose.connect( process.env.atlasdb,
+mongoose.connect( process.env.localdb, 
+  
+// mongoose.connect( process.env.atlasdb,
 {useNewUrlParser:true,
   useUnifiedTopology: true 
 })
